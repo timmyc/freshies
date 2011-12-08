@@ -8,8 +8,8 @@ class Shredder < ActiveRecord::Base
   after_create :send_confirmation
 
   def send_confirmation
-    Twilio.connect('AC562c96a151e4a10786c007ee149b37d1', '1c88dc7566c0201e970a5d5825ba079d')
-    Twilio::Sms.message("+15415267770", self.mobile, "conepatrol.com confirmation code: #{self.confirmation_code}")
+    Twilio.connect(ENV['TWILIO_SID'], ENV['TWILIO_AUTH'])
+    Twilio::Sms.message(ENV['TWILIO_NUMBER'], self.mobile, "conepatrol.com confirmation code: #{self.confirmation_code}")
   end
 
   def confirm

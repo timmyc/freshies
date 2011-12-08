@@ -6,7 +6,6 @@ gem 'chronic'
 gem 'nokogiri'
 gem 'jquery-rails'
 gem 'json'
-gem 'sqlite3'
 gem 'twilio'
 
 group :assets do
@@ -15,7 +14,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :production do
+  gem "pg"
+end
+
 group :test, :development do
+  gem "sqlite3"
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
   gem 'shoulda'

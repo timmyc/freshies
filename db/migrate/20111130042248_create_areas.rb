@@ -12,5 +12,6 @@ class CreateAreas < ActiveRecord::Migration
 
       t.timestamps
     end
+    Area.create(:name => 'Mt. Bachelor', :twitter => 'mtbachelor', :klass => 'Bachelor')
   end
 end

@@ -6,6 +6,7 @@ gem 'chronic'
 gem 'nokogiri'
 gem 'jquery-rails'
 gem 'json'
+gem 'thin'
 gem 'twilio'
 
 group :assets do

@@ -1,0 +1,13 @@
+<div id="copy" class="grad shadow">
+  <div id="notices">
+        <% if flash[:notice] -%>
+          <div class="notice"><%= flash[:notice] %></div>
+        <% end -%>
+        <% if flash[:error] -%>
+          <div class="error"><%= flash[:error] %></div>
+        <% end -%>
+      </div>
+  <h1 class="large">Great Success!</h1>
+  <p>You are all set.  Now we just need some snow.  When it does snow at least <%= @shredder.inches %>, we'll let you know!</p>
+  <br style="clear: both" />
+</div>

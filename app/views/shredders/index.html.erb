@@ -1,0 +1,17 @@
+<ul id="steps">
+  <li class="shadow grad"><span class="large">Step 1 &ndash; Ullr Delivers</span>Someday (soon) it will snow once again up at Mt. Bachelor.  As you slumber, lord Ullr will take a massive dump on our beloved hill, and we will all be stoked!</li>
+  <li class="shadow grad"><span class="large">Step 2 &ndash; CP Texts</span>The trusty Cone Patrol robot scours the interwebs for the latest freshiez measurements.  Unlike your ski bro partner, the cp robot doesn't hook up with your girlfriend and then pass out and forget to look at conditions.</li>
+  <li class="shadow grad"><span class="large">Step 3 &ndash; You Shred</span>If there is enough freshies to suit your fancy, we send you a text.  You gear up, get stoked, and git sum.  No need to call the snow phone, or view a web page, you get notified when the gnar has arrived.</li>
+  <li class="shadow grad"><span class="large">Sign Up</span>Sound Good?  Did we mention it is free (as in beer)?  Enter your mobile digits below, and select your snow threshold, and you are set!
+    <%= form_for @shredder do |f| %>
+      <div>
+        <%= f.label :mobile, 'Mobile:' %>
+        <%= f.text_field :mobile %><br /><br />
+        <%= f.label :mobile, 'Freshies Threshold:' %>
+        <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false} %>
+        <%= f.hidden_field :area_id, {:value => 1} %>
+      </div>
+      <%= f.submit 'Sign Up', {:id=>'signup'} %>
+    <% end %>
+  </li>
+</ul>

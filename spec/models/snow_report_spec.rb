@@ -27,5 +27,8 @@ describe SnowReport do
       @snow_report2 = Factory.create(:snow_report, :area => @area, :report_time => Time.now + 2.hours)
       @snow_report2.first_report.should be_false
     end
+    it "should call send_notifications after create" do
+      @snow_report.should_receive(:send_notifications)
+    end
   end
 end

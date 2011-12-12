@@ -6,10 +6,11 @@ class Shredder < ActiveRecord::Base
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id
   after_create :send_confirmation
+  scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches >= ?",area_id,inches)}
 
   def send_confirmation
-    Twilio.connect(ENV['TWILIO_SID'], ENV['TWILIO_AUTH'])
-    Twilio::Sms.message(ENV['TWILIO_NUMBER'], self.mobile, "conepatrol.com confirmation code: #{self.confirmation_code}")
+    Twilio.connect(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
+    Twilio::Sms.message(Cone::Application.config.twilio_number, self.mobile, "conepatrol.com/confirm confirmation code: #{self.confirmation_code}")
   end
 
   def confirm

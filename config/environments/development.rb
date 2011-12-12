@@ -27,4 +27,12 @@ Cone::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Cone Configs - over-ride
+  config.twilio_sid = ENV['TWILIO_SID']
+  config.twilio_auth = ENV['TWILIO_AUTH']
+  config.twilio_number = ENV['TWILIO_NUMBER']
+  config.mtb_key = ENV['MTB_KEY']
+  config.mtb_secret = ENV['MTB_SECRET']
+  
 end

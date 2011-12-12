@@ -8,7 +8,7 @@ class Freshies
   def initialize
     @endpoint = 'http://gentle-autumn-1698.herokuapp.com/snow_reports'
     @areas = [{
-      :key => ENV['MTB_KEY'], :secret => ENV['MTB_SECRET']
+      :key => Cone::Application.config.mtb_key, :secret => Cone::Application.config.mtb_secret
     }]
   end
 

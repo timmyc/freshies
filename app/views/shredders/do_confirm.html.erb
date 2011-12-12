@@ -1,4 +1,4 @@
-<div id="copy" class="grad shadow">
+<div class="sixteen columns">
   <div id="notices">
         <% if flash[:notice] -%>
           <div class="notice"><%= flash[:notice] %></div>
@@ -7,7 +7,6 @@
           <div class="error"><%= flash[:error] %></div>
         <% end -%>
       </div>
-  <h1 class="large">Great Success!</h1>
+  <h3>Great Success!</h3>
   <p>You are all set.  Now we just need some snow.  When it does snow at least <%= @shredder.inches %>, we'll let you know!</p>
-  <br style="clear: both" />
 </div>

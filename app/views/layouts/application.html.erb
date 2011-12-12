@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8"/>
-  <title><%= @title ? @title : 'OMG' %></title>
+  <meta charset="utf-8">
+  <title>conepatrol - powder alerts for mt bachelor via text</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
   <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link rel="stylesheet" media="all" href=""/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application" %>
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 </head>
-<body lang="en">
-  <div id="page">
-    <div id="header">cone patrol</div>
-    <div id="main">
-      <%= yield %>
-      <br style="clear: left" />
+<body>
+
+  <div class="container">
+    <div class="eight columns">
+      <h1 class="remove-bottom" style="margin-top: 40px">Cone Patrol</h1>
     </div>
-    <div id="footer"></div>
-  </div>
+    <div class="eight columns">
+      <ul class="nav">
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Telemetry</a></li>
+        <li><a href="#">About</a></li>
+        <li class="last"><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <div class="sixteen columns tagline"><h5>Text Powder alerts for Mt. Bachelor <sup>beta</sup></h5></div>
+      <%= yield %>
+  </div><!-- container -->
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>

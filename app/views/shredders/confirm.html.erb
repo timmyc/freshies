@@ -1,4 +1,3 @@
-<div id="copy" class="grad shadow">
   <div id="notices">
         <% if flash[:notice] -%>
           <div class="notice"><%= flash[:notice] %></div>
@@ -7,16 +6,14 @@
           <div class="error"><%= flash[:error] %></div>
         <% end -%>
       </div>
-  <h1 class="large">Almost Done!</h1>
+<div class="sixteen columns">
+  <h3>Almost Done!</h3>
   <p>You should be getting a text right about.... now.  Fill out the confirmation code in the form below, and you are all signed up!</p>
   <%= form_for @shredder, :url => :do_confirm do |f| %>
-      <div>
-        <%= f.label :mobile, 'Mobile:' %>
-        <%= f.text_field :mobile %><br /><br />
-        <%= f.label :mobile, 'Confirmation Code:' %>
-        <%= f.text_field :confirmation_code, { :value => '' } %>
-      </div>
-      <%= f.submit 'Confirm', {:id=>'signup'} %>
-    <% end %>
-    <br style="clear: both" />
+    <%= f.label :mobile, 'Mobile:' %>
+    <%= f.text_field :mobile %>
+    <%= f.label :mobile, 'Confirmation Code:' %>
+    <%= f.text_field :confirmation_code, { :value => '' } %>
+    <%= f.submit 'Confirm', {:id=>'signup'} %>
+  <% end %>
 </div>

@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 
 gem 'chronic'
+gem 'delayed_job'
+gem 'capistrano'
 gem 'nokogiri'
 gem 'jquery-rails'
 gem 'json'

@@ -1,5 +1,5 @@
 set :application, "cone"
-set :repository,  "set your repository location here"
+set :repository,  "git@github.com:timmyc/freshies.git"
 
 set :scm, :git
 
@@ -7,14 +7,19 @@ role :web, "freshies"                          # Your HTTP server, Apache/etc
 role :app, "freshies"                          # This may be the same as your `Web` server
 role :db,  "freshies", :primary => true # This is where Rails migrations will run
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+after "deploy:symlink_assets"
 
-# If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
    task :start do ; end
    task :stop do ; end
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
+
+  desc "Symlink db config and public assets"    
+  task :symlink_db_assets, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/"
+    run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/"
+    run "ln -nfs #{shared_path}/tmp/ #{release_path}/tmp/"
+  end
  end

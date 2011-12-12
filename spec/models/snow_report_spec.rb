@@ -28,7 +28,9 @@ describe SnowReport do
       @snow_report2.first_report.should be_false
     end
     it "should call send_notifications after create" do
-      @snow_report.should_receive(:send_notifications)
+      @snow_report3 = Factory.build(:snow_report, :area => @area, :report_time => Time.now + 4.hours)
+      @snow_report3.should_receive(:send_notifications)
+      @snow_report3.save
     end
   end
 end

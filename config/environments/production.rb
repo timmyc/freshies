@@ -19,6 +19,7 @@ Cone::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  config.time_zone = 'Pacific Time (US & Canada)'
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -57,4 +58,10 @@ Cone::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.twilio_sid = ''
+  config.twilio_auth = ''
+  config.twilio_number = ''
+  config.mtb_key = ''
+  config.mtb_secret = ''
 end

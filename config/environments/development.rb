@@ -27,6 +27,7 @@ Cone::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.time_zone = 'Pacific Time (US & Canada)'
 
   # Cone Configs - over-ride
   config.twilio_sid = ENV['TWILIO_SID']

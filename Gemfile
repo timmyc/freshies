@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
+gem 'execjs'
 gem 'chronic'
 gem 'delayed_job'
 gem 'capistrano'
@@ -9,6 +10,7 @@ gem 'mysql'
 gem 'nokogiri'
 gem 'jquery-rails'
 gem 'json'
+gem 'therubyracer'
 gem 'thin'
 gem 'twilio'
 

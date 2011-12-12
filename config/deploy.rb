@@ -1,5 +1,6 @@
+require "bundler/capistrano"
 set :application, "cone"
-set :repository,  "git@github.com:timmyc/freshies.git"
+set :repository,  "git://github.com/timmyc/freshies.git"
 
 set :scm, :git
 
@@ -8,19 +9,19 @@ role :app, "freshies"                          # This may be the same as your `W
 role :db,  "freshies", :primary => true # This is where Rails migrations will run
 set :deploy_to, '/home/timmy/conepatrol.com'
 
-after "deploy:symlink_assets"
-
- namespace :deploy do
-   task :start do ; end
-   task :stop do ; end
-   task :restart, :roles => :app, :except => { :no_release => true } do
-     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-   end
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+  
+  after :deploy, "symlink_assets"
 
   desc "Symlink db config and public assets"    
-  task :symlink_db_assets, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
+  task :symlink_assets, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/"
     run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/"
     run "ln -nfs #{shared_path}/tmp/ #{release_path}/tmp/"
   end
- end
+end

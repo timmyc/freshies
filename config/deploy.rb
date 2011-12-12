@@ -6,6 +6,7 @@ set :scm, :git
 role :web, "freshies"                          # Your HTTP server, Apache/etc
 role :app, "freshies"                          # This may be the same as your `Web` server
 role :db,  "freshies", :primary => true # This is where Rails migrations will run
+set :deploy_to, '/home/timmy/conepatrol.com'
 
 after "deploy:symlink_assets"
 

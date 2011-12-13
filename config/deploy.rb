@@ -20,6 +20,8 @@ namespace :deploy do
 
   desc "Symlink db config and public assets"    
   task :symlink_assets, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
+    run "rm #{release_path}/config/database.yml"
+    run "rm #{release_path}/config/environments/production.rb"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/"
     run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/"
     run "ln -nfs #{shared_path}/tmp/ #{release_path}/tmp/"

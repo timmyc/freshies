@@ -1,4 +1,6 @@
 Cone::Application.routes.draw do
+  #devise_for :shredders, :path => "shredders", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :registration => 'register', :sign_up => 'sign_up' }
+  devise_for :shredders
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,7 +53,7 @@ Cone::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'shredders#index'
+  root :to => 'shredders#home'
 
   # See how all your routes lay out with "rake routes"
 

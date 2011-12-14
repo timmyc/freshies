@@ -1,0 +1,32 @@
+<div class="ten columns">
+<% if @shredder.errors.any? %>
+    <div class="alert-notice">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @shredder.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<h3>Get Sum Powder Alerts</h3>
+<p>You are almost that much closer to getting freshiez.  Fill out the quick form to the right, and you can setup your custom powder alerts &ndash; <em>HOT</em>!</p>
+<h4>Privacy</h4>
+<p>Your mobile phone number will only be used to send you alerts when the snow threshold is met.  You can remove/cancel alerts at anytime.  Your contact information will not be shared or sold.</p>
+<h4>Money</h4>
+<p>Standard text messaging rates from your carrier do apply.  So deal with it, or get unlimitted text and feast on the bounty of electronic communications.</p>
+</div>
+<div class="sidebar five columns offset-by-one">
+<h3>Super Quick Form</h3>
+<%= form_for @shredder do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.label :mobile %>
+  <%= f.password_field :mobile %>
+  <%= f.submit 'Sign Up' %>
+<% end %>
+</div>

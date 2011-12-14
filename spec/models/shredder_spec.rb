@@ -18,6 +18,6 @@ describe Shredder do
 
   it "should send a confirmation code via twilio" do
     Twilio::Sms.should_receive(:message).exactly(1).times.and_return(true)
-    @shredder = Factory.create(:shredder, :mobile => '1234567890')
+    @shredder = Factory.create(:shredder, :mobile => '1234567890',:email => 'meh@bleh.com')
   end
 end

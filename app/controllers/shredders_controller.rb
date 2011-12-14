@@ -1,17 +1,11 @@
 class ShreddersController < ApplicationController
 
-  def index
+  def home 
     @shredder = Shredder.new
-  end
-
-  def create
-    @shredder = Shredder.find_or_create_by_area_id_and_mobile(params[:shredder][:area_id],params[:shredder][:mobile])
-    @shredder.update_attributes(:inches => params[:shredder][:inches])
-    render :action => 'confirm'
   end
 
   def confirm
-    @shredder = Shredder.new
+    @shredder = current_shredder
   end
 
   def do_confirm

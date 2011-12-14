@@ -1,10 +1,13 @@
- <div class="five columns">
+<div class="one-third column">
+  <div class="shimmed">
     <h3>Cone Patrol?</h3>
     <p>I heart skiing.  I double heart skiing powder.  "Cone Patrol" is a term a ski buddy gave to hiking the cone at <a href="http://mtbachelor.com">Mt. Bachelor</a> prior to opening for freshiez.</p><p>Born from that tradition is <em>conepatrol.com</em>, a way for you &ndash; the fellow shredder, to get powder alerts sent to your phone via text.</p>
     <p>So ditch the snow phone, and setup a <em>conepatrol</em> alert to shout at you when the goods have dropped.  See you on the cone!</p>
     <p>&ndash; Timmy</p>
   </div>
-  <div class="five columns offset-by-one">
+</div>
+  <div class="one-third column">
+    <div class="shimmed">
     <h3>How it Works</h3>
     <ul class="square">
       <li><p><strong>Ullr Delivers</strong>: Someday (soon) it will snow once again up at Mt. Bachelor.  As you slumber, lord Ullr will take a massive dump on our beloved hill, and we will all be stoked!</p></li>
@@ -12,11 +15,20 @@
       <li><p><strong>Make Turns</strong>: If there is enough freshies to suit your fancy, we send you a text.  You gear up, get stoked, and git sum.  No need to call the snow phone, or view a web page, you get notified when the gnar has arrived.</p></li>
     </ul>
   </div>
-  <div class="four columns offset-by-one">
+  </div>
+  <div class="one-third column">
+    <div class="highlight shimmed">
+      <% if !shredder_signed_in? -%>
     <h3>Sign Up!</h3>
     <p>Signing up is super simple, and free!  Fill out this form, and we'll send you a confirmation text.  Its as easy as snowboarding!</p>
     <p>Enter your mobile number (10 digits no dashes/spaces), and select the new snow threshold to trigger an alert.</p>
     <%= form_for @shredder do |f| %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
       <%= f.label :mobile, 'Mobile:' %>
       <%= f.text_field :mobile %>
       <%= f.label :mobile, 'Freshies Threshold:' %>
@@ -24,4 +36,14 @@
       <%= f.hidden_field :area_id, {:value => 1} %>
       <%= f.submit 'Sign Up', {:id=>'sign_up'} %>
     <% end %>
+  <% else -%>
+    <h3>Yo Buddy!!</h3>
+    <% if current_shredder.confirmed? -%>
+
+    <% else -%>
+    <p>We need to confirm your mobile number before we can send alerts.  Click the button below to confirm you number (<%= current_shredder.mobile %>) via text:</p>
+    <a href="/confirm" class="button">Confirm Now</a>
+    <% end -%>
+  <% end -%>
+  </div>
   </div>

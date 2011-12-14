@@ -37,7 +37,16 @@
         <li class="last"><a href="#">Support</a></li>
       </ul>
     </div>
-    <div class="sixteen columns tagline"><h5>Text Powder alerts for Mt. Bachelor <sup>beta</sup></h5></div>
+    <div class="sixteen columns"><div class="tagline"><h5>Text Powder alerts for Mt. Bachelor <sup>beta</sup></h5></div></div>
+    <% if flash[:notice] || flash[:error] -%>
+    <div class="sixteen columns">
+      <% if flash[:notice] -%>
+        <div class="alert-notice"><%= flash[:notice] %></div>
+      <% else -%>
+        <div class="alert-error"><%= flash[:error] %></div>
+      <% end -%>
+    </div>
+    <% end -%>
       <%= yield %>
   </div><!-- container -->
   <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>

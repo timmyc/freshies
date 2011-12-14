@@ -44,11 +44,9 @@ module Cone
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.time_zone = 'Pacific Time (US & Canada)'
     config.twilio_sid = ''
     config.twilio_auth = ''
     config.twilio_number = ''
-    config.mtb_key = ''
-    config.mtb_secret = ''
-
   end
 end

@@ -24,11 +24,11 @@ describe SnowReport do
       @snow_report.first_report.should be_true
     end
     it "should set first_report false if other reports exist for this date" do
-      @snow_report2 = Factory.create(:snow_report, :area => @area, :report_time => Time.now + 2.hours)
+      @snow_report2 = Factory.create(:snow_report, :area => @area, :report_time => Time.now + 2.minutes)
       @snow_report2.first_report.should be_false
     end
     it "should call send_notifications after create" do
-      @snow_report3 = Factory.build(:snow_report, :area => @area, :report_time => Time.now + 4.hours)
+      @snow_report3 = Factory.build(:snow_report, :area => @area, :report_time => Time.now + 2.minutes)
       @snow_report3.should_receive(:send_notifications)
       @snow_report3.save
     end

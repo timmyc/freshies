@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212220252) do
+ActiveRecord::Schema.define(:version => 20111213044608) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -45,11 +45,23 @@ ActiveRecord::Schema.define(:version => 20111212220252) do
     t.text     "confirmation_code"
     t.integer  "area_id"
     t.integer  "inches"
-    t.boolean  "active",            :default => false
-    t.boolean  "confirmed",         :default => false
+    t.boolean  "active",                                :default => false
+    t.boolean  "confirmed",                             :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "shredders", ["reset_password_token"], :name => "index_shredders_on_reset_password_token", :unique => true
 
   create_table "snow_reports", :force => true do |t|
     t.datetime "report_time"

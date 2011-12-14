@@ -1,4 +1,5 @@
 class ShreddersController < ApplicationController
+  before_filter :authenticate_shredder!, :except => :home
 
   def home 
     @shredder = Shredder.new
@@ -6,6 +7,7 @@ class ShreddersController < ApplicationController
 
   def confirm
     @shredder = current_shredder
+    @shredder.send_confirmation if params[:resend]
   end
 
   def do_confirm

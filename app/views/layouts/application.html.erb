@@ -31,10 +31,12 @@
     </div>
     <div class="eight columns">
       <ul class="nav">
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Telemetry</a></li>
-        <li><a href="#">About</a></li>
-        <li class="last"><a href="#">Support</a></li>
+        <li><a href="/">Home</a></li>
+        <% if !shredder_signed_in? -%>
+          <li><a href="<%= new_shredder_registration_url %>">Sign Up</a></li>
+        <% else -%>
+          <li><a href="<%= destroy_shredder_session_url %>">Log Out</a></li>
+        <% end -%>
       </ul>
     </div>
     <div class="sixteen columns"><div class="tagline"><h5>Text Powder alerts for Mt. Bachelor <sup>beta</sup></h5></div></div>

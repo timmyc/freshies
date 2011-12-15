@@ -19,7 +19,7 @@ class Bachelor
     data = {}
     keys.each_with_index{|k,i| data[slug_me(k)] = values[i].to_i }
     self.readings = {
-      :report_time => Time.parse(updated),
+      :report_time => Time.zone.parse(updated),
       :snowfall_twelve => snowfall_twelve.to_i,
       :snowfall_twentyfour => snowfall_twentyfour.to_i,
       :base_temp => data[:west_village_temperature],

@@ -6,9 +6,9 @@ class Freshies
   attr_accessor :areas
   
   def initialize
-    @endpoint = 'http://gentle-autumn-1698.herokuapp.com/snow_reports'
+    @endpoint = 'http://localhost:3000/snow_reports'
     @areas = [{
-      :key => Cone::Application.config.mtb_key, :secret => Cone::Application.config.mtb_secret
+      :key => ENV['MTB_KEY'], :secret => ENV['MTB_SECRET']
     }]
   end
 

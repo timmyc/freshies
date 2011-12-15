@@ -5,7 +5,9 @@ describe Alert do
   it{ should belong_to(:shredder) }
   it{ should belong_to(:area) }
 
-  describe 'send_message' do
-
+  it "should call send_message after_create" do
+    @alert = Factory.build(:alert)
+    @alert.should_receive(:deliver)
+    @alert.save
   end
 end

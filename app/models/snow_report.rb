@@ -11,11 +11,10 @@ class SnowReport < ActiveRecord::Base
   end
 
   def send_notifications
-    if self.first_report
+    if self.first_report 
       shredders = Shredder.notices_for(self.snowfall_twelve,self.area_id)
       shredders.each do |s|
-        alert = Alert.find_or_create_by_snow_report_id_and_shredder_id(self.id,s.id)
-        alert.send_message
+        self.alerts.create(:shredder_id => s.id, :area_id => self.area_id)
       end
     end
   end

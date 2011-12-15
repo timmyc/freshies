@@ -4,8 +4,12 @@ class SnowReportsController < ApplicationController
   def create
     worker = Module.const_get(@area.klass).new
     data = worker.get_data
-    report = @area.snow_reports.find_or_create_by_report_time(data[:report_time])
-    report.update_attributes(data)
+    report = @area.snow_reports.first(:conditions => { :report_time => data[:report_time]})
+    if !report
+      report = @area.snow_reports.create(data)
+    else
+      report.update_attributes(data)
+    end
     render :json => report
   end
 

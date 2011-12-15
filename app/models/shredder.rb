@@ -10,6 +10,7 @@ class Shredder < ActiveRecord::Base
   validates_length_of :mobile, :is => 10
   validates_numericality_of :inches
   belongs_to :area
+  has_many :alerts
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id
   #after_create :send_confirmation

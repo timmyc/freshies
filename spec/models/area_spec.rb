@@ -6,6 +6,7 @@ describe Area do
   it{ should validate_presence_of(:klass) }
   it{ should have_many(:snow_reports) }
   it{ should have_many(:shredders) }
+  it{ should have_many(:alerts) }
 
   describe 'secret' do
     before do

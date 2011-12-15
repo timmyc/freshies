@@ -11,6 +11,7 @@ describe Shredder do
   it{ should validate_numericality_of(:inches) }
   it{ should validate_uniqueness_of(:mobile).scoped_to(:area_id) }
   it{ should belong_to(:area) }
+  it{ should have_many(:alerts) }
 
   it "should auto-create a confirmation_code" do
     @shredder.confirmation_code.empty?.should be_false

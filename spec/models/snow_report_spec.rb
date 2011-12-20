@@ -7,7 +7,8 @@ describe SnowReport do
   it{ should validate_presence_of(:area_id) }
   before do
     @area = Factory.create(:area)
-    @shredder = Factory.create(:shredder, :area => @area, :active => true, :confirmed => true)
+    @shredder = Factory.create(:shredder, :area => @area)
+    @shredder.confirm
     @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now)
   end
 
@@ -33,12 +34,6 @@ describe SnowReport do
       @snow_report2 = Factory.create(:snow_report, :area => @area, :report_time => Time.now + 2.minutes)
       @snow_report2.first_report.should be_false
     end
-    xit "should call send_notifications after create" do
-      @snow_report.save
-      @snow_report3 = Factory.build(:snow_report, :area => @area, :report_time => Time.now + 2.minutes)
-      @snow_report3.should_receive(:send_notifications)
-      @snow_report3.save
-    end
     it "should not create alerts after create if first report if snowfall is 0" do
       @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now, :snowfall_twelve => 0)
       expect {
@@ -46,8 +41,8 @@ describe SnowReport do
       }.to change(@snow_report.alerts, :size).by(0)
     end
     it "should have the right set of shredders to notify" do
-      @shredders = Shredder.notices_for(1,@area.id)
-      @shredders.first.id.should eql(@shredder.id)
+      @subscriptions = Subscription.for_inches_area(1,@area.id)
+      @subscriptions.first.shredder_id.should eql(@shredder.id)
     end
     it "should be the first report" do
       @snow_report.save
@@ -60,7 +55,8 @@ describe SnowReport do
       }.to change(@snow_report.alerts, :size).by(1)
     end
     it "should only send alerts to shredders that want to be notified" do
-      @shredder2 = Factory.create(:shredder, :area => @area, :active => true, :confirmed => true, :inches => 10, :email => 'jah@brah.com', :mobile => '4513501234')
+      @shredder2 = Factory.create(:shredder, :area => @area, :inches => 10, :email => 'jah@brah.com', :mobile => '4513501234')
+      @shredder2.confirm
       @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
       expect {
         @snow_report.save

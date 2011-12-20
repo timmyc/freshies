@@ -3,6 +3,7 @@ class Area < ActiveRecord::Base
   before_create :set_api_keys
   has_many :snow_reports
   has_many :shredders
+  has_many :subscriptions
   has_many :alerts
 
   def generate_code(size = 6)

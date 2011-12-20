@@ -11,9 +11,10 @@ class Shredder < ActiveRecord::Base
   validates_numericality_of :inches
   belongs_to :area
   has_many :alerts
+  has_many :subscriptions
+  has_many :text_subscriptions
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id
-  #after_create :send_confirmation
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
 
   def send_confirmation
@@ -22,14 +23,16 @@ class Shredder < ActiveRecord::Base
   end
 
   def confirm
+    return true if self.confirmed
     self.update_attributes(:active => true, :confirmed => true)
+    self.text_subscriptions.create(:inches => self.inches, :area_id => self.area_id, :active => true)
   end
   
   private
 
   def create_confirmation_code
     charset = %w{ 2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
-    self.confirmation_code = (0...4).map{ charset.to_a[rand(charset.size)] }.join.downcase
+    self.confirmation_code = (0...4).map{ charset.to_a[rand(charset.size)] }.join
     send_confirmation
   end
 end

@@ -7,6 +7,7 @@ describe Area do
   it{ should have_many(:snow_reports) }
   it{ should have_many(:shredders) }
   it{ should have_many(:alerts) }
+  it{ should have_many(:subscriptions) }
 
   describe 'secret' do
     before do

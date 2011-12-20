@@ -12,9 +12,9 @@ class SnowReport < ActiveRecord::Base
 
   def send_notifications
     if self.first_report 
-      shredders = Shredder.notices_for(self.snowfall_twelve,self.area_id)
-      shredders.each do |s|
-        self.alerts.create(:shredder_id => s.id, :area_id => self.area_id)
+      subscriptions = Subscription.for_inches_area(self.snowfall_twelve,self.area_id)
+      subscriptions.each do |s|
+        self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id)
       end
     end
   end

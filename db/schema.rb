@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215043623) do
+ActiveRecord::Schema.define(:version => 20111220143555) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -90,5 +90,16 @@ ActiveRecord::Schema.define(:version => 20111215043623) do
 
   add_index "snow_reports", ["area_id"], :name => "index_snow_reports_on_area_id"
   add_index "snow_reports", ["report_time"], :name => "index_snow_reports_on_report_time"
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "shredder_id"
+    t.integer  "area_id"
+    t.integer  "inches"
+    t.string   "type"
+    t.text     "message"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

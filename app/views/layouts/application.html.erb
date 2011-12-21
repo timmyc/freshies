@@ -27,13 +27,13 @@
 
   <div class="container">
     <div class="eight columns">
-      <h1 class="remove-bottom" style="margin-top: 40px">Cone Patrol</h1>
+      <a href="/"><h1 class="remove-bottom logo" style="margin-top: 40px">Cone Patrol</h1></a>
     </div>
     <div class="eight columns">
       <ul class="nav">
         <li><a href="/">Home</a></li>
         <% if !shredder_signed_in? -%>
-          <li><a href="<%= new_shredder_registration_url %>">Sign Up</a></li>
+          <li><a href="<%= new_shredder_session_url %>">Log In</a></li>
         <% else -%>
           <li><a href="<%= destroy_shredder_session_url %>">Log Out</a></li>
         <% end -%>

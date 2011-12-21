@@ -337,7 +337,7 @@
 body{ font-family: 'Open Sans', HelveticaNeue, sans-serif; }
 div.tagline { margin: 20px 0px 20px 0px; text-align: center; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 4px 0px 10px 0px }
 div.tagline sup{ vertical-align: super; font-size: 60%; text-transform: uppercase }
-ul.nav { float: right; margin: 66px 0px 0px 0px; }
+ul.nav { float: right; margin: 106px 0px 0px 0px; }
 ul.nav li{ display: inline; margin-right: 20px;  }
 ul.nav li.last{ margin-right: 0px; }
 h1, h2, h3, h4, h5, h6 {
@@ -346,6 +346,13 @@ h1, h2, h3, h4, h5, h6 {
 		font-weight: normal; }
 div.highlight{ background: #fff6d9 }
 div.shimmed{ width: 90%; margin: 0 auto 0; padding: 10px; }
+h1.logo{
+  display: block;
+  background: url(/images/header.png) 0 0 no-repeat transparent;
+  width: 300px;
+  height: 88px;
+  text-indent: -9999px;
+}
 
 @media only screen and (max-width: 767px) {
   ul.nav{ margin-top: 10px }

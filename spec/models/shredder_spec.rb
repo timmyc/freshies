@@ -36,6 +36,23 @@ describe Shredder do
     @shredder.active.should be_false
   end
 
+  it "should give a random name" do
+    @shredder.should respond_to(:random_name)
+  end
+
+  it "should have a helper for active subscriptions" do
+    @shredder.should respond_to(:active_subscriptions)
+  end
+
+  it "should return the correct number of active subscriptions" do
+    @shredder.active_subscriptions.should eql([])
+  end
+
+  it "should return the correct number of active subscriptions" do
+    @shredder.confirm
+    @shredder.active_subscriptions.size.should eql(1)
+  end
+
   context 'confirm' do
     it "should auto-create a subscription on confirm" do
       expect{ @shredder.confirm }.should change(@shredder.text_subscriptions, :length).from(0).to(1)

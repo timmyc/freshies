@@ -37,9 +37,16 @@
       <%= f.submit 'Sign Up', {:id=>'sign_up'} %>
     <% end %>
   <% else -%>
-    <h3>Yo Buddy!!</h3>
+    <h3>Yo <%= current_shredder.random_name %>!</h3>
     <% if current_shredder.confirmed? -%>
-
+    <div class="stat">
+      <span class="title"><a href="/subscriptions">Your Subscriptions</a></span>
+      <span class="value"><a href="/subscriptions"><%= current_shredder.active_subscriptions.size -%></a></span>
+    </div>
+    <div class="stat">
+      <span class="title">Alerts Sent</span>
+      <span class="value"><%= current_shredder.alerts.size -%></span>
+    </div>
     <% else -%>
     <p>We need to confirm your mobile number before we can send alerts.  Click the button below to confirm you number (<%= current_shredder.mobile %>):</p>
     <a href="/confirm" class="button">Confirm Now</a>

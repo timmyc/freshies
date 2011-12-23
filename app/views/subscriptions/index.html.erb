@@ -1,0 +1,19 @@
+<div class="sixteen columns">
+  <h3>Manage Your Subscriptions</h3>
+  <% @shredder.subscriptions.each do |subscription| -%>
+  <div class="one-third column">
+    <div class="shimmed alert-notice sub">
+      <a href="<%= edit_subscription_url(subscription) %>"><span class="desc"><%= subscription.description %></span>
+      <span class="threshold"><%= subscription.inches %>&quot;</span>
+      <span class="area">@<%= subscription.area.name %></span></a>
+    </div>
+  </div>
+  <% end -%>
+  <div class="one-third column">
+    <div class="shimmed alert-green sub">
+      <span class="desc">Create Alert</span>
+      <span class="threshold">+</span>
+      <span class="area">Coming Soon...</span>
+    </div>
+  </div>
+</div>

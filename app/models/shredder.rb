@@ -16,6 +16,7 @@ class Shredder < ActiveRecord::Base
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
+  GREETS = ['SICKBURD','Gaper','Powderpuff','Powstar','Child of Ullr','Brah','Bro','Gnarsef','Brosef','Sickter','Shredder','Gaper Gapper','Shredhead','Freshie Fiend','Snow Bunny','Snow Angel','Conehead']
 
   def send_confirmation
     Twilio.connect(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
@@ -26,6 +27,14 @@ class Shredder < ActiveRecord::Base
     return true if self.confirmed
     self.update_attributes(:active => true, :confirmed => true)
     self.text_subscriptions.create(:inches => self.inches, :area_id => self.area_id, :active => true)
+  end
+
+  def random_name
+    GREETS[rand(GREETS.size)]
+  end
+
+  def active_subscriptions
+    self.subscriptions.find(:all, :conditions => {:active => true})
   end
   
   private

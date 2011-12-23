@@ -36,3 +36,13 @@ ul#steps{
   border-radius:8px;
 }
 
+div.stat{ width: 100%; margin: 5px auto 5px auto; border-top: 1px solid #ccc; padding: 5px; text-align: center }
+  div.stat span.title { display: block; width: 100%; text-transform: uppercase; font-weight: bold }
+  div.stat a { text-decoration: none }
+  div.stat span.value { font-family: 'Lato', sans-serif; text-shadow: 2px 2px 0 #ccc; font-size: 64px; display: block; line-height: 84px; }
+  div.sub{ text-align: center }
+  div.sub a { color: #fff; text-decoration: none }
+  span.desc { display: block; width: 100%; font: 26px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: bold }
+  span.threshold { text-align: center; display: block; width: 100%; font-family: 'Lato', sans-serif; text-shadow: 2px 2px 0 #333; font-size: 84px; display: block; line-height: 84px; }
+  span.area { text-align: center; display: block; width: 100% }
+

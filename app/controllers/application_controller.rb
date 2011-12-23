@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     confirm_url
   end
   
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+  
 end

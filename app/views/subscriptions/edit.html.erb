@@ -1,0 +1,15 @@
+<div class="ten columns">
+  <h3>Update <%= @subscription.description %></h3>
+  <%= form_for (@subscription, :as => 'subscription') do |f| %>
+    <%= f.label :inches, 'Freshies Threshold:' %>
+    <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
+    <%= f.submit 'Update Threshold' %>
+  <% end %>
+</div>
+<div class="sidebar five columns offset-by-one">
+  <div class="highlight shimmed">
+  <h3>Want to Bail?</h3>
+  <p>If you want to remove this alert, just click this crazy large button down below. Keep in mind, there is no way to add a new alert right now... so check yoself before you wreck yoself.</p>
+  <%=link_to "Delete Subscription?",subscription_path(@subscription.id), :method => :delete, :class => "danger", :confirm => "Are you sure ?"%>
+  </div>
+</div>

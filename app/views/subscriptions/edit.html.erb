@@ -1,9 +1,9 @@
 <div class="ten columns">
   <h3>Update <%= @subscription.description %></h3>
-  <%= form_for (@subscription, :as => 'subscription') do |f| %>
+  <%= form_for(@subscription, :as => 'subscription') do |f| %>
     <%= f.label :inches, 'Freshies Threshold:' %>
     <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
-    <%= f.submit 'Update Threshold' %>
+    <%= f.submit 'Update' %>
   <% end %>
 </div>
 <div class="sidebar five columns offset-by-one">

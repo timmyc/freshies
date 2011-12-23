@@ -25,3 +25,6 @@ namespace :deploy do
   end
 end
 after "deploy", "symlink_assets"
+
+        require './config/boot'
+        require 'airbrake/capistrano'

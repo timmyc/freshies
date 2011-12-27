@@ -8,7 +8,7 @@ describe SnowReport do
   before do
     @area = Factory.create(:area)
     @shredder = Factory.create(:shredder, :area => @area)
-    @shredder.confirm
+    @shredder.mobile_confirm
     @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now)
   end
 
@@ -56,7 +56,7 @@ describe SnowReport do
     end
     it "should only send alerts to shredders that want to be notified" do
       @shredder2 = Factory.create(:shredder, :area => @area, :inches => 10, :email => 'jah@brah.com', :mobile => '4513501234')
-      @shredder2.confirm
+      @shredder2.mobile_confirm
       @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
       expect {
         @snow_report.save

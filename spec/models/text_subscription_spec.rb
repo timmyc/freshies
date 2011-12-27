@@ -6,7 +6,7 @@ describe TextSubscription do
   
   it "should have a description" do
     @shredder = Factory.create(:shredder)
-    @shredder.confirm
+    @shredder.mobile_confirm
     @text_subscription = @shredder.text_subscriptions.first
     @text_subscription.should respond_to(:description)
   end

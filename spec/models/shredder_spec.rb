@@ -25,7 +25,7 @@ describe Shredder do
   end
 
   it "should respond to confirm" do
-    @shredder.should respond_to(:confirm)
+    @shredder.should respond_to(:mobile_confirm)
   end
 
   it "should respond to active" do
@@ -49,13 +49,22 @@ describe Shredder do
   end
 
   it "should return the correct number of active subscriptions" do
-    @shredder.confirm
+    @shredder.mobile_confirm
     @shredder.active_subscriptions.size.should eql(1)
   end
 
-  context 'confirm' do
+  context 'mobile_confirm' do
     it "should auto-create a subscription on confirm" do
-      expect{ @shredder.confirm }.should change(@shredder.text_subscriptions, :length).from(0).to(1)
+      expect{ @shredder.mobile_confirm }.should change(@shredder.text_subscriptions, :length).from(0).to(1)
     end
   end
+
+  context 'devise confirm' do
+    [:confirmation_token,:confirmed_at,:confirmation_sent_at,:confirmation_token].each do |s|
+      it "should respond to #{s.to_s}" do
+        @shredder.should respond_to(s)
+      end
+    end
+  end
+
 end

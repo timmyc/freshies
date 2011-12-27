@@ -31,12 +31,12 @@
     </div>
     <div class="eight columns">
       <ul class="nav">
-        <li><a href="/">Home</a></li>
         <li><a href="http://blog.conepatrol.com">Blog</a></li>
+        <li><a href="http://conepatrol.happyfox.com/embed/1/?type=popup" target="_blank">Feedback</a></li>
         <% if !shredder_signed_in? -%>
           <li><a href="<%= new_shredder_session_url %>">Log In</a></li>
         <% else -%>
-          <li><a href="<%= subscriptions_url %>">My Subscriptions</a></li>
+          <li><a href="<%= subscriptions_url %>">My Account</a></li>
           <li><a href="<%= destroy_shredder_session_url %>">Log Out</a></li>
         <% end -%>
       </ul>
@@ -60,9 +60,13 @@
           </ul>
         </div>
       </div>
+    <div class="sixteen columns" id="latest">
+      <div class="mellow-yellow last-update"><span class="highlight">Latest Conditions:</span> Snowfall Last 12 Hours: <span class="highlight"><%= @snow_report.snowfall_twelve %>&quot;</span> | Base Temp: <span class="highlight"><%= @snow_report.base_temp %>&deg;</span> | Updated: <span class="highlight"><%= @snow_report.report_time.strftime("%H:%M %m-%d-%y") -%></div>
+    </div>
   </div><!-- container -->
   <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   <%= javascript_include_tag "application" %>
+  <% if Rails.env.production? -%>
   <script type='text/javascript'>
    var _springMetq = _springMetq || [];
    _springMetq.push(['id', '7ee4a4a170']);
@@ -76,7 +80,7 @@
      x.parentNode.insertBefore(s, x);
     }
    )();
-  </script>
-  <div id="_hdp_embed" class="hf-embed left-embed" > <link rel="stylesheet" href="http://conepatrol.happyfox.com/media/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8"/> <link rel="stylesheet" href="http://conepatrol.happyfox.com/media/css/embed.css" type="text/css" media="screen" charset="utf-8"/> <script type="text/javascript" src="http://conepatrol.happyfox.com/media/scripts/jquery.prettyPhoto.js" charset="utf-8"></script> <div class="embed-button left-embed-button " style="background-color: #666;"> <a href="http://conepatrol.happyfox.com/embed/1/?type=iframe&iframe=true&width=690&height=525" rel="prettyPhoto" style="text-decoration:none;"> <div class="embed-button-text"> Feedback </div> </a> </div> <script type="text/javascript"> jQuery(document).ready(function() { jQuery('a[rel="prettyPhoto"]').prettyPhoto({ animation_speed: "fast", opacity: 0.60, allow_resize: false, show_title: false, theme: "facebook", iframe_markup: '<iframe id="happyfox-embed-form" src ="{path}" width="{width}" height="{height}" frameborder="no"></iframe>' }); }); </script> </div>
+ </script>
+ <% end -%>
 </body>
 </html>

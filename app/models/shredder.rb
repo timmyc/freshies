@@ -23,7 +23,7 @@ class Shredder < ActiveRecord::Base
     Twilio::Sms.message(Cone::Application.config.twilio_number, self.mobile, "conepatrol.com/confirm confirmation code: #{self.confirmation_code}")
   end
 
-  def confirm
+  def mobile_confirm
     return true if self.confirmed
     self.update_attributes(:active => true, :confirmed => true)
     self.text_subscriptions.create(:inches => self.inches, :area_id => self.area_id, :active => true)

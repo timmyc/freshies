@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220143555) do
+ActiveRecord::Schema.define(:version => 20111224174951) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -68,8 +68,12 @@ ActiveRecord::Schema.define(:version => 20111220143555) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "shredders", ["confirmation_token"], :name => "index_shredders_on_confirmation_token", :unique => true
   add_index "shredders", ["reset_password_token"], :name => "index_shredders_on_reset_password_token", :unique => true
 
   create_table "snow_reports", :force => true do |t|

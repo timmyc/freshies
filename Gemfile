@@ -16,6 +16,7 @@ gem 'json'
 gem 'therubyracer'
 gem 'thin'
 gem 'twilio'
+gem 'ullr', '>= 0.1.3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'

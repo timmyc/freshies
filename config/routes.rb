@@ -13,6 +13,7 @@ Cone::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
   match 'confirm' => 'shredders#confirm', :as => :confirm
   match 'doconfirm' => 'shredders#do_confirm', :as => :do_confirm
+  match 'greetings/:id' => 'alerts#answer', :as => :answer
   #match 'confirm-email' => 'shredders#send_email_instructions', :as => :send_email_instructions
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

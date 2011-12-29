@@ -3,6 +3,7 @@ require 'spec_helper'
 describe TextSubscription do
   it{ should belong_to(:area) }
   it{ should belong_to(:shredder) }
+  it{ should have_many(:alerts) }
   
   it "should have a description" do
     @shredder = Factory.create(:shredder)

@@ -14,7 +14,7 @@ class SnowReport < ActiveRecord::Base
     if self.first_report 
       subscriptions = Subscription.for_inches_area(self.snowfall_twelve,self.area_id)
       subscriptions.each do |s|
-        self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id)
+        self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id, :subscription_id => s.id)
       end
     end
   end

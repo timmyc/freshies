@@ -10,15 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111224174951) do
+ActiveRecord::Schema.define(:version => 20111229060049) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
     t.integer  "snow_report_id"
     t.integer  "area_id"
-    t.boolean  "sent",           :default => false
+    t.boolean  "sent",            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subscription_id"
   end
 
   create_table "areas", :force => true do |t|

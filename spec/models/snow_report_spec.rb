@@ -20,6 +20,10 @@ describe SnowReport do
     end
   end
 
+  it "should return a hash of alert attributes" do
+    @snow_report.alert_attributes.should be_an_instance_of(Hash)
+  end
+
   context "first_report" do
     it "should respond to first_report" do
       @snow_report.save

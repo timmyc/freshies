@@ -1,10 +1,36 @@
 <div class="ten columns">
-  <h3>Update <%= @subscription.description %></h3>
-  <%= form_for(@subscription, :as => 'subscription') do |f| %>
-    <%= f.label :inches, 'Freshies Threshold:' %>
-    <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
-    <%= f.submit 'Update' %>
-  <% end %>
+  <div class="ten columns"><h3>Updating <%= @subscription.description %></h3></div>
+  <div class="five columns">
+    <div class="shimmed">
+      <h4>Customize Your Alert</h4>
+      <p>Now you have real ultimate power!  You can customize your very own text shredder alert.  You could use up your 140 charachters by telling yourself just how rad you are, or you can use the following widgets to add some real info:</p>
+      <ul>
+        <li>{{new_snow}}</li>
+        <li>{{base_depth}}</li>
+        <li>{{mid_depth}}</li>
+        <li>{{base_temp}}</li>
+        <li>{{mid_temp}}</li>
+        <li>{{summit_temp}}</li>
+        <li>{{report_time}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="four columns">
+    <div class="shimmed">
+    <%= form_for(@subscription, :as => 'subscription') do |f| %>
+      <%= f.label :inches, 'Freshies Threshold:' %>
+      <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
+      <%= f.label :message, 'Text Message:' %>
+      <%= f.text_area :message, { :cols => 0, :rows => 0, :style => '', :class => 'message' } %>
+      <span class="countdown"></span>
+      <%= f.submit 'Update' %>
+      <a class="button" id="preview">Update Preview</a>
+    <% end %>
+
+    <h5>Alert Preview</h5>
+    <div id="preview-window"></div>
+    </div>
+  </div>
 </div>
 <div class="sidebar five columns offset-by-one">
   <div class="highlight shimmed">

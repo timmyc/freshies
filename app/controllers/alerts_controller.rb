@@ -1,14 +1,17 @@
 class AlertsController < ApplicationController
+
   def answer
     @alert = Alert.find(params[:id])
     verb = Twilio::Verb.new { |v|
       if @alert
-      v.play 'http://conepatrol.com/kids.mp3'
-      v.pause '2'
-      v.say "Yo bro, this is the cone patrol powder alert robot.  Bachelor is reporting #{@alert.snow_report.snowfall_twelve} inches of snow overnight.  It is currently #{@alert.snow_report.base_temp} degrees at the base. Go shred buddy!", :voice => 'woman'
+        @subscription = @alert.subscription
+        v.play "http://conepatrol.com/clips/#{@subscription.intro}.mp3" if !@subscription.intro.empty?
+        v.pause '2'
+        v.say Mustache.render(@alert.subscription.message, @alert.snow_report.attributes), :voice => @subscription.gender
       end
       v.hangup
     }
     render :xml => verb.response
   end
+
 end

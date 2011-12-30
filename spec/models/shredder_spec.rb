@@ -14,6 +14,7 @@ describe Shredder do
   it{ should have_many(:alerts) }
   it{ should have_many(:subscriptions) }
   it{ should have_many(:text_subscriptions) }
+  it{ should have_many(:voice_subscriptions) }
 
   it "should auto-create a confirmation_code" do
     @shredder.confirmation_code.empty?.should be_false

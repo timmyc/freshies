@@ -19,6 +19,10 @@ class SnowReport < ActiveRecord::Base
     end
   end
 
+  def alert_attributes
+    return { :new_snow => self.snowfall_twelve, :base_depth => self.base_depth, :mid_depth => self.mid_depth, :base_temp => self.base_temp, :mid_temp => self.mid_temp, :summit_temp => self.summit_temp, :report_time => self.report_time.strftime("%H:%M %m-%d-%y") }
+  end
+
   private
 
   def set_first

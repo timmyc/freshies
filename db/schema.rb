@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229060049) do
+ActiveRecord::Schema.define(:version => 20111229182518) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20111229060049) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "intro"
+    t.string   "gender"
   end
 
 end

@@ -46,3 +46,6 @@ div.stat{ width: 100%; margin: 5px auto 5px auto; border-top: 1px solid #ccc; pa
   span.threshold { text-align: center; display: block; width: 100%; font-family: 'Lato', sans-serif; text-shadow: 2px 2px 0 #333; font-size: 84px; display: block; line-height: 84px; }
   span.area { text-align: center; display: block; width: 100% }
 
+textarea.message { margin-bottom: 0 }
+span.countdown{ display: block; width: 100%; clear: left; margin-bottom: 10px; font-size: 12px }
+div#preview-window{ padding: 10px; font-size: 12px; background: #ccc; font-weight: bold }

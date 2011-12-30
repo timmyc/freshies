@@ -60,9 +60,6 @@
           </ul>
         </div>
       </div>
-    <div class="sixteen columns" id="latest">
-      <div class="mellow-yellow last-update"><span class="highlight">Latest Conditions:</span> Snowfall Last 12 Hours: <span class="highlight"><%= @snow_report.snowfall_twelve %>&quot;</span> | Base Temp: <span class="highlight"><%= @snow_report.base_temp %>&deg;</span> | Updated: <span class="highlight"><%= @snow_report.report_time.strftime("%H:%M %m-%d-%y") -%></div>
-    </div>
   </div><!-- container -->
   <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   <%= javascript_include_tag "application" %>

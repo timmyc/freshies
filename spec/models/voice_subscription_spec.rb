@@ -5,6 +5,13 @@ describe VoiceSubscription do
   it{ should belong_to(:shredder) }
   it{ should have_many(:alerts) }
   it{ should validate_presence_of(:message) }
+  it{ should allow_value('male').for(:gender) }
+  it{ should allow_value('female').for(:gender) }
+  it{ should_not allow_value('shemale').for(:gender) }
+  it{ should_not allow_value('dancing-queen').for(:intro) }
+  it{ should_not allow_value('').for(:intro) }
+  it{ should allow_value('kids').for(:intro) }
+  it{ should allow_value(nil).for(:intro) }
 
   it "should have an array of acceptable intros" do
     VoiceSubscription.intros.should be_an_instance_of(Array)

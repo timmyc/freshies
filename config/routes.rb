@@ -21,6 +21,7 @@ Cone::Application.routes.draw do
   resources :shredders
   resources :subscriptions
   resources :text_subscriptions, :controller => 'subscriptions'
+  resources :voice_subscriptions
 
   # Sample resource route with options:
   #   resources :products do

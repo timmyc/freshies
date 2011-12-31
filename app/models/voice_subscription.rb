@@ -1,12 +1,19 @@
 class VoiceSubscription < Subscription
+  GENDERS = ['male','female']
   INTROS = ['kids']
+  validates_inclusion_of :gender, :in => GENDERS 
+  validates_inclusion_of :intro, :in => INTROS, :allow_nil => true
 
   def self.intros
     return INTROS
   end
 
+  def self.genders
+    return GENDERS
+  end
+
   def description
-    return "Voice Powder Alert"
+    return "Voice Alert"
   end
 
   def send_message(report)

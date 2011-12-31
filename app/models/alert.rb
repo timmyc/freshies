@@ -11,7 +11,7 @@ class Alert < ActiveRecord::Base
 
   def send_message
     return if self.sent?
-    self.subscription.send_message(self.snow_report)
+    self.subscription.send_message(self)
     self.update_attribute('sent',true)
   end
 end

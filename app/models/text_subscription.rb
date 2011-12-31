@@ -6,7 +6,8 @@ class TextSubscription < Subscription
     return "Powder Alert"
   end
 
-  def send_message(report)
+  def send_message(alert)
+    report = alert.snow_report
     message = Mustache.render(self.message, report.alert_attributes)
     Twilio.connect(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
     Twilio::Sms.message(Cone::Application.config.twilio_number, self.shredder.mobile, message)

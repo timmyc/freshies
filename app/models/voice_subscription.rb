@@ -16,8 +16,8 @@ class VoiceSubscription < Subscription
     return "Voice Alert"
   end
 
-  def send_message(report)
+  def send_message(alert)
     Twilio.connect(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
-    Twilio::Call.make(Cone::Application.config.twilio_number, self.shredder.mobile, "http://conepatrol.com/greetings/#{self.id}")
+    Twilio::Call.make(Cone::Application.config.twilio_number, self.shredder.mobile, "http://conepatrol.com/greetings/#{alert.id}")
   end
 end

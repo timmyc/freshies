@@ -39,11 +39,11 @@
   <% else -%>
     <h3>Yo <%= current_shredder.random_name %>!</h3>
     <% if current_shredder.confirmed? -%>
-    <div class="stat">
+    <div class="shimmed stat">
       <span class="title"><a href="/subscriptions">Your Subscriptions</a></span>
       <span class="value"><a href="/subscriptions"><%= current_shredder.active_subscriptions.size -%></a></span>
     </div>
-    <div class="stat">
+    <div class="shimmed stat">
       <span class="title">Alerts Sent</span>
       <span class="value"><%= current_shredder.alerts.size -%></span>
     </div>

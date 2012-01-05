@@ -350,7 +350,7 @@ h1, h2, h3, h4, h5, h6 {
 		font-weight: normal; }
 div.highlight{ background: #fff6d9 }
 div.shimmed{ width: 90%; margin: 0 auto 0; padding: 10px; }
-div.sub{ height: 140px }
+div.sub{ height: 140px; margin-top: 10px; }
 h1.logo{
   display: block;
   background: url(/images/header.png) 0 0 no-repeat transparent;

@@ -23,6 +23,14 @@ describe VoiceSubscription do
     @voice_subscription = @shredder.voice_subscriptions.create(:inches => 4, :message => 'omg it snowed {{snowfall_twelve}} and it is {{base_temp}} at the base!')
   end
 
+  it "should respond to message_length" do
+    @voice_subscription.should respond_to(:message_length)
+  end
+
+  it "should have the correct message_length" do
+    @voice_subscription.message_length.should eql(330)
+  end
+
   it "should have a description" do
     @voice_subscription.should respond_to(:description)
   end

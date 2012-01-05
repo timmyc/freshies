@@ -7,7 +7,11 @@ class ShreddersController < ApplicationController
 
   def confirm
     @shredder = current_shredder
-    @shredder.send_confirmation if params[:resend]
+    if @shredder.confirmed?
+      redirect_to subscriptions_url
+    else
+      @shredder.send_confirmation if params[:resend]
+    end
   end
 
   def do_confirm

@@ -3,7 +3,11 @@ class TextSubscription < Subscription
   belongs_to :area
 
   def description
-    return "Powder Alert"
+    return "Text Alert"
+  end
+
+  def message_length
+    130
   end
 
   def send_message(alert)

@@ -29,5 +29,5 @@ group :test, :development do
   gem "sqlite3"
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
-  gem 'shoulda'
+  gem 'shoulda', '>= 3.0.0.beta'
 end

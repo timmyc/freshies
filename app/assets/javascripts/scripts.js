@@ -3,7 +3,7 @@ $(document).ready(function() {
     var message = $('.message');
     var chars = message.val().length;
     var text = message.val();
-    var limit = 130;
+    var limit = message.attr('data-max');
     var remaining = limit - chars;
     $('.countdown').text(remaining + ' characters remaining.');
     if(chars > limit){

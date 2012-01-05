@@ -3,8 +3,14 @@
     <%= form_for(@subscription, :as => 'subscription') do |f| %>
       <%= f.label :inches, 'Freshies Threshold:' %>
       <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
+      <% if @subscription.instance_of?(VoiceSubscription) -%>
+      <%= f.label :intro, 'Intro Music' %>
+      <%= f.select :intro, VoiceSubscription.intros.collect{|i| ["#{i}",i]}, {:include_blank => true, :value => @subscription.intro} %>
+      <%= f.label :gender, 'Voice' %>
+      <%= f.select :gender, VoiceSubscription.genders.collect{|i| ["#{i}",i]}, {:include_blank => false, :value => @subscription.gender} %>
+      <% end -%>
       <%= f.label :message, 'Text Message:' %>
-      <%= f.text_area :message, { :cols => 0, :rows => 0, :style => '', :class => 'message' } %>
+      <%= f.text_area :message, { :cols => 0, :rows => 0, :style => '', :class => 'message', :'data-max' => @subscription.message_length } %>
       <span class="countdown"></span>
       <%= f.submit 'Save Changes' %>
       <a class="button" id="preview">Update Preview</a>
@@ -16,7 +22,7 @@
 <div class="sidebar seven columns offset-by-one">
   <div class="highlight shimmed">
   <h3>Customize Your Alert</h3>
-      <p>Now you have real ultimate power!  You can customize your very own text shredder alert.  You could use up your 140 charachters by telling yourself just how rad you are, or you can use the following widgets to add some real info:</p>
+  <p>Now you have real ultimate power!  You can customize your very own text shredder alert.  You could use up your <%= @subscription.message_length %> charachters by telling yourself just how rad you are, or you can use the following widgets to add some real info:</p>
       <ul class="square">
         <li>{{new_snow}}</li>
         <li>{{base_depth}}</li>

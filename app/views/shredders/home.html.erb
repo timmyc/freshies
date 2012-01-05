@@ -2,7 +2,7 @@
   <div class="shimmed">
     <h3>Cone Patrol?</h3>
     <p>I heart skiing.  I double heart skiing powder.  "Cone Patrol" is a term a ski buddy gave to hiking the cone at <a href="http://mtbachelor.com">Mt. Bachelor</a> prior to opening for freshiez.</p><p>Born from that tradition is <em>conepatrol.com</em>, a way for you &ndash; the fellow shredder, to get powder alerts sent to your phone via text.</p>
-    <p>So ditch the snow phone, and setup a <em>conepatrol</em> alert to shout at you when the goods have dropped.  See you on the cone!</p>
+    <p>So ditch the snow phone, and setup a <em>conepatrol</em> alert to shout at you when the goods have dropped.  See you on the cone &ndash; or up at the Doo!</p>
     <p>&ndash; @conepatrolapp</p>
   </div>
 </div>
@@ -10,9 +10,9 @@
     <div class="shimmed">
     <h3>How it Works</h3>
     <ul class="square">
-      <li><p><strong>Ullr Delivers</strong>: Someday (soon) it will snow once again up at Mt. Bachelor.  As you slumber, lord Ullr will take a massive dump on our beloved hill, and we will all be stoked!</p></li>
-      <li><p><strong><em>conepatrol</em> Texts</strong>: The trusty Cone Patrol robot scours the interwebs for the latest freshiez measurements.  Unlike your ski bro partner, the cp robot doesn't hook up with your girlfriend and then pass out and forget to look at conditions.</p></li>
-      <li><p><strong>Make Turns</strong>: If there is enough freshies to suit your fancy, we send you a text.  You gear up, get stoked, and git sum.  No need to call the snow phone, or view a web page, you get notified when the gnar has arrived.</p></li>
+      <li><p><strong>Ullr Delivers</strong>: Someday (soon) it will snow once again up in the Cascades.  As you slumber, lord Ullr will take a massive dump on your favorite ski hill!</p></li>
+      <li><p><strong><em>conepatrol</em> Texts</strong>: The trusty Cone Patrol robot scours the interwebs for the latest freshiez measurements.  Unlike your ski bro partner, the cp robot doesn't drink too many jaeger bombs and then pass out and forget to look at conditions.</p></li>
+      <li><p><strong>Make Turns</strong>: If there is enough freshies to suit your fancy at your ski hill of choice, we send you a text.  You gear up, get stoked, and git sum.  No need to call the snow phone, or view a web page, you get notified when the gnar has arrived.</p></li>
     </ul>
   </div>
   </div>
@@ -33,7 +33,8 @@
       <%= f.text_field :mobile %>
       <%= f.label :mobile, 'Freshies Threshold:' %>
       <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false} %>
-      <%= f.hidden_field :area_id, {:value => 1} %>
+      <%= f.label :area_id, 'Ski Area:' %>
+      <%= f.select :area_id, Area.all.collect{|i| [i.name,i.id]}, {:include_blank => false} %>
       <%= f.submit 'Sign Up', {:id=>'sign_up'} %>
     <% end %>
   <% else -%>

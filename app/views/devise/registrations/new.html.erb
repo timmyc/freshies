@@ -30,7 +30,8 @@
       <%= f.text_field :mobile %>
       <%= f.label :mobile, 'Freshies Threshold:' %>
       <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false} %>
-      <%= f.hidden_field :area_id, {:value => 1} %>
+      <%= f.label :area_id, 'Ski Area:' %>
+      <%= f.select :area_id, Area.all.collect{|i| [i.name,i.id]}, {:include_blank => false} %>
       <%= f.submit 'Sign Up', {:id=>'sign_up'} %>
 <% end %>
 </div>

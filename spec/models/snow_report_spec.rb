@@ -16,12 +16,22 @@ describe SnowReport do
     it "should provide today's reports" do
       @snow_report.save
       @snow_report2 = Factory.create(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days))
-      SnowReport.for_date(Time.now.to_date).size.should eql(1)
+      SnowReport.for_date_area(Time.now.to_date, @area.id).size.should eql(1)
+    end
+    it "should not include other areas reports" do
+      @area2 = Factory.create(:area)
+      @snow_report.save
+      @snow_report2 = Factory.build(:snow_report, :area => @area2, :report_time => Time.now)
+      SnowReport.for_date_area(Time.now.to_date, @area.id).size.should eql(1)
     end
   end
 
   it "should return a hash of alert attributes" do
     @snow_report.alert_attributes.should be_an_instance_of(Hash)
+  end
+
+  it "should set the correct area on alert attributes" do
+    @snow_report.alert_attributes[:area].should eql(@area.name)
   end
 
   context "first_report" do

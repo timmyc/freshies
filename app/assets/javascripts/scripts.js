@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#preview-window').html(h);
   };
 
-  var demoData = {
+  var demoDataOld = {
     base_temp: 28,
     mid_temp: 26,
     summit_temp: 24,

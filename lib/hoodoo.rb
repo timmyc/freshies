@@ -33,7 +33,7 @@ class Hoodoo
   end
 
   def strip_junk(str)
-    str.gsub(/\t|\r|\n|\302\260/,'').downcase
+    str.gsub(/\t|\r|\n/,'').downcase
   end
 
   def slug_me(str)

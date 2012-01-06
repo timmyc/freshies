@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = current_shredder.text_subscriptions.new(params[:subscription])
     if @subscription.save
+      flash[:notice] = "Your new subscription has been saved"
       redirect_to subscriptions_url
     else
       flash[:error] = "Please correct the errors and try again"

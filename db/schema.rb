@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229182518) do
+ActiveRecord::Schema.define(:version => 20120106051011) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(:version => 20111229182518) do
     t.string   "klass"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     :default => true
   end
+
+  add_index "areas", ["active"], :name => "index_areas_on_active"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

@@ -1,0 +1,62 @@
+<div class="eight columns">
+  <% if @subscription.errors.any? %>
+    <div class="alert-error">
+      <h4>Gaper Alert!</h4>
+      <p>Please fix the following errors:</p>
+      <ul>
+        <% for message in @subscription.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h3>New <%= @subscription.description %></h3>
+    <%= form_for(@subscription, :as => 'subscription') do |f| %>
+      <%= f.label :area_id, 'Ski Area:' %>
+      <%= f.select :area_id, Area.active.collect{|i| [i.name,i.id]}, {:include_blank => false} %>
+      <%= f.label :inches, 'Freshies Threshold:' %>
+      <%= f.select :inches, (2..12).collect{|i| ["#{i} or more inches",i]}, {:include_blank => false, :value => @subscription.inches} %>
+      <% if @subscription.instance_of?(VoiceSubscription) -%>
+      <%= f.label :intro, 'Intro Music' %>
+      <%= f.select :intro, VoiceSubscription.intros.collect{|i| ["#{i}",i]}, {:include_blank => true, :value => @subscription.intro} %>
+      <%= f.label :gender, 'Voice' %>
+      <%= f.select :gender, VoiceSubscription.genders.collect{|i| ["#{i}",i]}, {:include_blank => false, :value => @subscription.gender} %>
+      <% end -%>
+      <%= f.label :message, 'Text Message:' %>
+      <%= f.text_area :message, { :cols => 0, :rows => 0, :style => '', :class => 'message', :'data-max' => @subscription.message_length } %>
+      <span class="countdown"></span>
+      <%= f.submit 'Save' %>
+      <a class="button" id="preview">Update Preview</a>
+    <% end %>
+
+    <h5>Alert Preview</h5>
+    <div id="preview-window"></div>
+</div>
+<div class="sidebar seven columns offset-by-one">
+  <div class="highlight shimmed">
+  <h3>Customize Your Alert</h3>
+  <p>Now you have real ultimate power!  You can customize your very own text shredder alert.  You could use up your <%= @subscription.message_length %> charachters by telling yourself just how rad you are, or you can use the following widgets to add some real info:</p>
+      <ul class="square">
+        <li>{{area}}</li>
+        <li>{{new_snow}}</li>
+        <li>{{base_depth}}</li>
+        <li>{{mid_depth}}</li>
+        <li>{{base_temp}}</li>
+        <li>{{mid_temp}}</li>
+        <li>{{summit_temp}}</li>
+        <li>{{report_time}}</li>
+      </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  var demoData = {
+    area: 'Resort Name',
+    base_temp: 28,
+    mid_temp: 26,
+    summit_temp: 24,
+    base_depth: 100,
+    mid_depth: 120,
+    new_snow: 6,
+    report_time: '06:15 12-28-11'
+  };
+</script>

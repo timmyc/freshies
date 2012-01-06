@@ -1,6 +1,7 @@
 class TextSubscription < Subscription
   belongs_to :shredder
   belongs_to :area
+  validates_uniqueness_of :area_id, :scope => :shredder_id, :message => 'is already being used in another one of your subscriptions'
 
   def description
     return "Text Alert"

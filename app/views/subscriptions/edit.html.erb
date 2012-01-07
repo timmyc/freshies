@@ -9,6 +9,8 @@
       <%= f.label :gender, 'Voice' %>
       <%= f.select :gender, VoiceSubscription.genders.collect{|i| ["#{i}",i]}, {:include_blank => false, :value => @subscription.gender} %>
       <% end -%>
+      <%= f.label :active, 'Subscription Active?:' %>
+      <%= f.check_box :active %>
       <%= f.label :message, 'Text Message:' %>
       <%= f.text_area :message, { :cols => 0, :rows => 0, :style => '', :class => 'message', :'data-max' => @subscription.message_length } %>
       <span class="countdown"></span>

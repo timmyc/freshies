@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/images/favicon.png" type="image/x-png">
+    <title>{PageTitle}</title>
+      
+      
+<meta name="color:Background" content="#f6f6f6"/>
+<meta name="color:Links" content="#000"/>
+<meta name="color:Headers" content="#333"/>
+<meta name="color:Body" content="#686868"/>
+<meta name="color:PostInfo" content="#999"/>
+<meta name="number:Posts per page" content="9"/>
+<meta name="number:Theme width" content="696"/>
+
+<style type="text/css">
+
+
+* {padding:0;margin:0;}
+img {border:0;}
+.clear {clear:both;font-size:5px;}
+.left {float:left;}
+.right {float:right;}
+.text-right {text-align:right;}
+.center {text-align:center;}
+.small {font-size:.857em !important;} /* 12px */
+.xsmall {font-size:.786em !important;} /* 11px */
+.xxsmall {font-size:9px;}
+.normal {font-size:12px !important;}
+.big {font-size:14px !important;}
+.bigger {font-size:16px !important;}
+.black {color:#000;}
+.green1,.green1:hover {color:#7ba709;}
+.green2,.green2:hover {color:#6f9904;}
+.darkgray {color:#333;}
+.strong {font-weight:bold;}
+.absolute-right {position:absolute;top:0;right:0;}
+.white {color:#fff;}
+.red {color:#f00;}
+*:focus {outline: none;}
+
+header,hgroup,footer,aside,nav,article,section {display:block;}
+
+body {
+    background:{color:Background};
+    color:{color:Body};
+    font-family:"LinuxLibertineORegular",Georgia, "Times New Roman", Times, serif;
+    font-size:.875em; /* 14px */
+}
+
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2011 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      FontSite Inc.
+ * License URL: http://www.fontspring.com/fflicense/fontsite
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'Fette1451Mittelschrift';
+    src: url('/themes/southlake/FetteMittelschrift-webfont.eot');
+    src: url('/themes/southlake/FetteMittelschrift-webfont.eot?iefix') format('eot'),
+         url('/themes/southlake/FetteMittelschrift-webfont.woff') format('woff'),
+         url('/themes/southlake/FetteMittelschrift-webfont.ttf') format('truetype'),
+         url('/themes/southlake/FetteMittelschrift-webfont.svg#webfontE5eEpGkO') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+
+    font-family: 'LinuxLibertineORegular';
+    src: url('/themes/southlake/linlibertine_re-4.7.5ro-webfont.eot');
+    src: url('/themes/southlake/linlibertine_re-4.7.5ro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/themes/southlake/linlibertine_re-4.7.5ro-webfont.woff') format('woff'),
+         url('/themes/southlake/linlibertine_re-4.7.5ro-webfont.ttf') format('truetype'),
+         url('/themes/southlake/linlibertine_re-4.7.5ro-webfont.svg#LinuxLibertineORegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    color:{color:Links};
+    text-decoration:underline;
+}
+
+.container {
+    margin:0 auto;
+    padding:0 10px 0 60px;
+    width:1086px;
+}
+
+header#page_header {
+    margin-left:40px;
+    text-align:center;
+    width:960px;
+}
+
+.header_image {
+    padding:15px 0 10px;
+}
+
+header#page_header hgroup {
+    padding:20px 0;
+}
+
+    header#page_header hgroup h1 {
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-weight:normal;
+        font-size:3em;
+        line-height:1em;
+        text-transform:uppercase;
+    }
+
+        header#page_header hgroup h1 a {
+            color:{color:Headers};
+            text-decoration:none;
+        }
+
+    header#page_header hgroup h2 {
+        color:#686868;
+        font-size:.933em;
+        font-weight:normal;
+        margin:0;
+        padding-top:5px;
+    }
+
+
+nav#navigation {
+    padding:0 0 20px;
+}
+
+    nav#navigation li {
+        display:inline-block;
+        font-size:1.143em;
+        list-style:none;
+        margin-top:0; /* override default */
+        margin-right:20px;
+    }
+    
+        nav#navigation li a {
+            color:#777;
+            text-decoration:none;
+        }
+        
+        nav#navigation li a:hover {
+            color:#555;
+        }
+
+nav#navigation ul li a.current {
+    color:#555;
+}
+
+
+form.search input.text {
+    font-size: 12px;
+    padding: 2px 2px 2px 20px;
+    border: 1px solid #ccc;
+    background:#fff url('/images/icons/search16.png') no-repeat 3px 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+aside#sidebar {
+    background:#e3e3e3;
+    -moz-box-shadow:inset 0 2px 5px #aaa,inset 0 -2px 5px #aaa;
+    box-shadow:inset 0 2px 5px #aaa,inset 0 -2px 5px #aaa;
+    margin-bottom:40px;
+    position:relative;
+}
+
+{block:List}
+
+    .cw {
+        color:#999 !important;
+        bottom:-35px;
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-size:1.429em;
+        font-weight:normal;
+        left:0;
+        position:absolute;
+        right:0;
+        text-align:center;
+        text-shadow:0 1px 0 rgba(255,255,255,.1);
+        text-transform:uppercase;
+    }
+    
+        .cw a {
+            color:#999 !important;
+            text-decoration:none;
+        }
+        
+            .cw a:hover {
+                color:#777 !important;
+                text-decoration:none !important;
+            }
+            
+{/block:List}
+
+{block:Show}
+
+    .cw {
+        color:#999 !important;
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-size:1.429em;
+        font-weight:normal;
+        padding:50px 0 20px;
+        text-align:center;
+        text-shadow:0 1px 0 rgba(255,255,255,.1);
+        text-transform:uppercase;
+    }
+    
+        .cw a {
+            color:#999 !important;
+            text-decoration:none;
+        }
+        
+            .cw a:hover {
+                color:#777 !important;
+                text-decoration:none !important;
+            }
+    
+{/block:Show}
+
+    .sidebar-container {
+        margin:0 auto;
+        padding:30px 0;
+        width:960px;
+    }
+    
+        aside#sidebar .column {
+            float:left;
+            padding-left:25px;
+            width:200px;
+        }
+
+    aside#sidebar a,.right-rail a {
+        color:{color:Links};
+        text-decoration:none;
+    }
+    
+    aside#sidebar a:hover,.right-rail a:hover {
+        text-decoration:underline;
+    }
+
+aside#sidebar section {
+    display:block;
+    padding:15px 0;
+}
+
+.right-rail section {
+    display:block;
+    padding:25px 0;
+}
+
+    aside section#profile {
+    }
+
+    aside#sidebar section h1,.right-rail section h1 {
+        color:{color:Headers};
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-size:1.286em;
+        font-weight:normal;
+    }
+    
+    aside#sidebar section ul li,.right-rail section ul li {
+        list-style: none;
+        line-height:1.2em;
+    }
+    
+    .profile_image {
+        -moz-box-shadow:0 0 10px #999;
+        box-shadow:0 0 10px #999;
+        margin-bottom:10px;
+        padding:5px;
+    }
+    
+    .profile p {
+        line-height:1.5em;
+        padding-top:5px;
+    }
+    
+    .external {
+        padding-top:5px;
+    }
+
+#search {
+    float:left;
+    margin:10px 56px 0 0;
+}
+
+    section#search #searchbox {
+        border:none;
+        -moz-border-radius:4px;
+        border-radius:4px;
+        color:#333;
+        font-size:14px;
+        -moz-box-shadow:inset 0 1px 3px #aaa;
+        box-shadow:inset 0 1px 3px #aaa;
+        padding:8px 5px 8px 28px;
+        width:170px;
+    }
+    
+    #searchbox_button {
+        font-size:.875em;
+        font-weight:bold;
+        height:auto;
+        margin-top:5px;
+        padding:3px 10px;
+    }
+
+section#search_results {
+    background:#fdfee8;
+    -moz-box-shadow:0 1px 2px #9b9b9b;
+    box-shadow:0 1px 2px #9b9b9b;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding:10px;
+    margin-bottom:35px;
+    width:1010px;
+}
+
+    section#search_results #searchbox {
+        border:none;
+        -moz-border-radius:4px;
+        border-radius:4px;
+        color:#333;
+        font-size:14px;
+        -moz-box-shadow:inset 0 1px 3px #aaa;
+        box-shadow:inset 0 1px 3px #aaa;
+        padding:8px 5px 8px 23px;
+        width:180px;
+    }
+
+    section#search_results .submit {
+        font-size:.875em;
+        font-weight:bold;
+        height:auto;
+        margin-top:5px;
+        padding:3px 10px;
+    }
+
+    section#search_results h1,section#filed_under h1 {
+        color:{color:Headers};
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-size:1.429em;
+        font-weight:normal;
+        line-height:1em;
+        margin-bottom:5px;
+    }
+    
+    section#filed_under h1 {
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:.857em;
+        margin-bottom:25px;
+    }
+    
+    section#search_results ul {}
+        
+        section#search_results li {
+            display:inline-block;
+            font-size:.786em;
+            list-style:none;
+            margin-right:5px;
+        }
+        
+    .back_to_blog {
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:.857em;
+        left:0;
+        margin-bottom:15px;
+        position:absolute;
+        top:50px;
+    }
+        
+        .back_to_blog a {
+            color:#fff;
+            background:#333;
+            display:inline-block;
+            padding:5px 10px;
+            text-decoration:none;
+        }
+        
+        .back_to_blog a:hover {background:#444;}
+        .back_to_blog a:active {background:#222;}
+
+.profile-link {
+    color:{color:Headers} !important;
+}
+
+section#contributors li a:first-child {
+padding-right:3px;
+text-decoration:none;
+}
+
+    section#contributors li a img {
+        -moz-box-shadow:0 0 3px #555;
+        box-shadow:0 0 3px #555;
+        height:20px;
+        padding:3px;
+        vertical-align:middle;
+        width:20px;
+    }
+    
+    section#contributors li a {
+        vertical-align:middle;
+    }
+
+section#subscriptions {
+    padding-bottom:3px !important;
+}
+
+    section#subscriptions h1 {
+        padding-bottom:5px;
+    }
+
+section#rss {
+    padding-top:3px !important;
+}
+
+section#subscriptions a,section#rss a {
+    display:inline-block;
+    font-size:.786em;
+    height:14px;
+    padding-left:18px;
+}
+
+section#subscriptions a {
+    background:url(/images/favicon.png) no-repeat -1px -1px;
+}
+
+section#rss a {
+    background:url(/images/feed-icon-14x14.png) no-repeat -1px -1px;
+}
+
+section#statistics {
+    font-size: 11px;
+}
+
+section#statistics strong {
+}
+
+aside#sidebar section#archives .year {
+    font-size:1em;
+    padding-top:5px;
+}
+
+aside#sidebar section#archives .inner {
+    font-size:.857em;
+    padding-top:5px;
+    padding-left:10px;
+}
+
+section#tags li.selected a {
+    font-weight:bold;
+}
+
+    section#tags li.selected a:hover {
+        cursor:pointer;
+    }
+    
+section#tags li span {
+    color:#a1a1a1;
+}
+    
+section#fans {
+}
+
+    section#fans h1 {
+        font-size:.786em;
+    }
+
+    section#fans li {
+        list-style:none;
+    }
+
+        section#fans li a img {
+            background:#fff;
+            border:solid 1px #797878;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            -moz-box-shadow:0 0 3px rgba(0,0,0,.3);
+            -webkit-box-shadow:0 0 3px rgba(0,0,0,.3);
+            box-shadow:0 0 3px rgba(0,0,0,.3);
+            height:20px;
+            padding:2px;
+            vertical-align:middle;
+            width:20px;
+        }
+        
+        section#fans li a {
+            color:{color:PostInfo};
+            font-size:.786em;
+            text-decoration:none;
+            vertical-align:middle;
+        }
+
+
+article header aside.sms {
+    font-size: 11px;
+}
+
+footer section.locations h1 {
+    font-weight: normal;
+    line-height: 21px;
+    margin-top: 0px;
+}
+
+input, select, textarea {
+    font-size: 1.6em;
+    line-height:1.3em !important;
+    padding: 5px;
+}
+
+input[type='text'], input[type='password'], select, textarea {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+input[type='button'], input[type='submit'] {
+    height: 2em;
+    font-size: 1.4em;
+    color: #000;
+    margin-top: 10px;
+}
+
+section.share {
+    margin-bottom: 18px;
+}
+
+#post_column {
+}
+        
+        #post_column .body a {
+            color:{color:Links};
+        }
+        
+        #post_column a:hover {
+        }
+
+    div#articles {
+    }
+    
+{block:List}
+    
+        article {background:#fff;
+            -moz-box-shadow:0 1px 2px #9b9b9b;
+            box-shadow:0 1px 2px #9b9b9b;
+            -moz-border-radius:5px;
+            border-radius:5px;
+            float:left;
+            height:280px;
+            margin:0 20px 20px 0;
+            overflow:hidden;
+            padding-top:20px;
+            position:relative;
+            width:330px;
+        }
+        
+            article header {
+            }
+
+                article header h1 {
+                    font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+                    font-size:1.429em;
+                    font-weight:normal;
+                    line-height:1em;
+                    padding:0 20px 10px;
+                }
+            
+                    article header h1 a {
+                        color:{color:Headers};
+                        text-decoration:none;
+                    }
+                    
+                    article header h1 a:hover {
+                    }
+            
+            article header section {
+                min-height:40px;
+                padding-top:17px;
+            }
+            
+            article header aside.sms {
+                float:left;
+                padding-top:10px;
+            }
+        
+        div.editbox {
+            height:16px;
+            left:20px;
+            position:absolute;
+            top:0;
+            visibility:hidden;
+        }
+        
+            div.editbox ul.mini_commands {
+                margin-top:0;
+            }
+            
+                ul.mini_commands li a {
+                    color:{color:Links};
+                }
+            
+            article:hover div.editbox {
+                visibility:visible;
+            }
+            
+        article div.body {
+            padding:0 20px 10px;
+        }
+        
+            article div.body div.inner {
+                line-height:1.5em;
+            }
+            
+                article div.body div.inner > :first-child {
+                    margin-bottom:0;
+                    margin-top:0;
+                }
+                
+                article div.body div.inner > p:first-child {
+                    /* margin-top:15px; */
+                }
+                
+                article div.body p, article div.body blockquote {
+                    margin:15px 0 18px;
+                }
+                
+                article div.body div.posterousGalleryMainDiv {
+                    margin:0 0 15px;
+                }
+                
+                div.posterousVideoMainDiv {
+                    margin:0;
+                }
+                
+                .posterousGalleryMainDiv a.posterousGalleryMainlink {
+                    text-decoration:none !important;
+                }
+                
+                article div.body div.inner a {
+                    text-decoration:underline;
+                }
+                
+                    article div.body div.inner a:hover {
+                    }
+                    
+                    article div.body div.inner ul,article div.body div.inner ol {
+                        padding-bottom:5px;
+                        padding-left:30px;
+                    }
+                
+                .galleryLabel {
+                    color:{color:Body};
+                }
+                    
+                .inner blockquote {
+                    border-left:solid 4px #eee !important;
+                }
+
+        article footer {
+            background:#f5f5f5;
+            -moz-border-radius-topleft: 0px;
+            -moz-border-radius-topright: 0px;
+            -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            -webkit-border-radius: 0px 0px 5px 5px;
+            border-radius: 0px 0px 5px 5px;
+            bottom:0;
+            left:0;
+            padding:0 20px;
+            position:absolute;
+            right:0;
+        }
+        
+            article div.body div.inner {
+                line-height:1.5em;
+            }
+        
+        .excerpt,.excerpt p {
+            display:inline;
+        }
+        
+{/block:List}
+    
+{block:Show}
+
+    .show-frame {
+        background:#fff;
+        -moz-box-shadow:0 1px 2px #9b9b9b;
+        box-shadow:0 1px 2px #9b9b9b;
+        -moz-border-radius:5px;
+        border-radius:5px;
+        border-top:solid 1px #e1e1e1;
+        margin:0 20px 20px 0;
+        position:relative;
+        width:1066px;
+    }
+    
+        table.show-table {
+            font-size:1em;
+            margin-top:0;
+        }
+        
+            table.show-table td.left-col {
+                padding:0;
+            }
+    
+        .show-frame .right-rail {
+            background:#f5f5f5;
+            -moz-border-radius-topleft: 0;
+            -moz-border-radius-topright: 5px;
+            -moz-border-radius-bottomright: 5px;
+            -moz-border-radius-bottomleft: 0px;
+            -webkit-border-radius: 0px 5px 5px 0px;
+            border-radius: 0px 5px 5px 0px;
+            padding:20px 30px;
+        }
+        
+            article header {
+            }
+
+                article header h1 {
+                    font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+                    font-size:1.429em;
+                    font-weight:normal;
+                    line-height:1em;
+                    padding:20px 30px 5px;
+                }
+            
+                    article header h1 a {
+                        color:{color:Headers};
+                        text-decoration:none;
+                    }
+                    
+                    article header h1 a:hover {
+                    }
+            
+            article header section {
+                min-height:40px;
+                padding-top:17px;
+            }
+            
+            article header aside.sms {
+                float:left;
+                padding-top:10px;
+            }
+        
+        div.editbox {
+            height:16px;
+            left:30px;
+            position:absolute;
+            top:5px;
+            visibility:hidden;
+        }
+        
+            div.editbox ul.mini_commands {
+                margin-top:0;
+            }
+            
+                ul.mini_commands li a {
+                    color:{color:Links};
+                }
+            
+            article:hover div.editbox {
+                visibility:visible;
+            }
+            
+        article div.body {
+            font-size:1.143em;
+            padding:5px 30px 10px;
+        }
+            
+            article div.body div.inner {
+                line-height:1.75em;
+            }
+        
+        {/block:Show}
+            
+                article div.body div.inner > :first-child {
+                    margin-bottom:0;
+                    margin-top:0;
+                }
+                
+                article div.body div.inner > p:first-child {
+                    /* margin-top:15px; */
+                }
+                
+                article div.body p, article div.body blockquote {
+                    margin:15px 0 18px;
+                }
+                
+                article div.body div.posterousGalleryMainDiv {
+                    margin:0 0 15px;
+                }
+                
+                div.posterousVideoMainDiv {
+                    margin:0;
+                }
+                
+                .posterousGalleryMainDiv a.posterousGalleryMainlink {
+                    text-decoration:none !important;
+                }
+                
+                article div.body div.inner a {
+                    text-decoration:underline;
+                }
+                
+                    article div.body div.inner a:hover {
+                    }
+                    
+                    article div.body div.inner ul,article div.body div.inner ol {
+                        padding-bottom:5px;
+                        padding-left:30px;
+                    }
+                
+                .galleryLabel {
+                    color:{color:Body};
+                }
+                    
+                .inner blockquote {
+                    border-left:solid 4px #eee !important;
+                }
+        
+        {block:Show}
+        
+            article footer {
+                background:#f5f5f5;
+                padding:5px 20px;
+                position:relative;
+            }
+        
+        {/block:Show}
+        
+            footer section {
+                margin-bottom:10px;
+            }
+            
+                footer section.author {
+                    color:{color:PostInfo};
+                    font-size:.786em;
+                    padding-bottom:10px;
+                }
+                
+                    footer section.author a {
+                        color:{color:PostInfo} !important;
+                    }
+                
+                    footer section.author h1 {
+                        display:inline;
+                        font-size:1em;
+                        font-weight:normal;
+                    }
+                    
+        footer section.comments_box {
+            background:rgba(0,0,0,.25);
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px;
+            border:solid 1px rgba(0,0,0,.35);
+            margin-top:15px;
+            padding:10px;
+        }
+
+            footer section.comments h1 {
+                font-size:.857em;
+                font-weight:normal;
+            }
+            
+                footer section.comments h1 a {
+                    text-decoration:none;
+                }
+            
+            div.comment_none_yet_msg {
+                font-style:italic;
+                font-weight:normal;
+                margin-top:5px;
+            }
+            
+                div.comment_none_yet_msg,div.commentunit {
+                    color:{color:Body};
+                }
+            
+            .commentunit .comment_value label {
+                color:{color:Body} !important;
+            }
+            
+            footer section.comments section h1 {
+                font-size:1em;
+                font-weight:bold;
+            }
+            div.comment {
+            }
+            
+            div.comment b {
+                font-weight:normal;
+            }
+
+
+            div.comment_label {
+                padding-top: 2px;
+                margin-top: 0px;
+            }
+            
+            
+            div.comment_date {
+            }
+            
+            div.commentunit {
+                /* margin: 10px 0px; */
+            }
+            
+            .comment_profile_description {
+                font-weight:bold;
+            }
+            
+                .comment_profile_description div {
+                    font-weight:normal;
+                }
+            
+            div.comment_value {
+            }
+
+            div.comment_avatar {
+                margin-top:10px;
+            }
+
+            div.commentunit div.profile_icon {
+                margin-top:5px;
+            }
+
+            div.commentname {
+                margin-bottom:5px;
+            }
+
+            div.comment_loading_div {
+            /* margin-left:155px; */
+            }
+            
+            div.comment_area {
+                clear:left;
+                float:left;
+            }
+                
+                footer section.comments h4 {
+                }
+                
+                .comment_value input[type="submit"] {
+                    font-size:.875em;
+                    font-weight:bold;
+                    height:auto;
+                    margin-top:5px;
+                    padding:3px 10px;
+                }
+                
+{/block:Show}
+
+div.posterous_comments h4, div.spanningheader h4 {
+    margin:0;
+}
+
+article footer time div {display:inline;}
+
+footer section.tags {
+    color:{color:PostInfo};
+    font-size:.786em;
+    padding-bottom:10px;
+}
+    
+    footer section.tags a {
+        color:{color:PostInfo} !important;
+    }
+
+    footer section.tags h1 {
+        display:inline;
+        font-size:11px;
+        margin:0;
+        padding-right:5px;
+    }
+    
+    footer section.tags h1 span {
+        font-weight:normal;
+    }
+    
+    footer section.tags ul {
+        display:inline;
+        margin:0;
+    }
+    
+    footer section.tags ul li {
+        display:inline;
+        list-style:none outside none;
+        padding-right:10px;
+    }
+    
+    footer section.tags ul li a {
+        color:{color:Links};
+    }
+    
+    footer section.locations {
+        margin-top:10px;
+        margin-bottom:0;
+    }
+    
+    footer section.locations h2 {
+        font-size:11px;
+        margin-top:0;
+    }
+    
+    footer section.locations ul {
+        display:block;
+        margin:0;
+    }
+    
+    footer section.locations ul li {
+        display:block;
+        list-style:none outside none;
+    }
+    
+    footer section.locations div.location_detail {
+        margin:10px 0;
+        overflow:auto;
+    }
+    
+    footer section.locations div.location_detail div.map {
+        float:left;
+        height:150px;
+        width:300px;
+    }
+    
+    footer section.locations div.location_detail div.summary {
+        float:right;
+        width:172px;
+    }
+    
+    footer section.share, footer section.tags, footer section.locations {
+        display:block;
+        /* margin-left:155px; */
+    }
+
+footer#pagination {
+    /* margin-left:155px; */
+    overflow:hidden;
+    padding-top:20px;
+    padding-bottom:50px;
+    text-align:center;
+}
+
+    .pagination {
+        background:#eee; /* old browsers */
+        background: -moz-linear-gradient(top, #EEEEEE 0%, #D5D5D5 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#D5D5D5)); /* webkit */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEEEE', endColorstr='#D5D5D5',GradientType=0 ); /* ie */
+        background: -o-linear-gradient(top, #EEEEEE 0%,#D5D5D5 100%); /* opera */
+        border:solid 1px #bcbcbc;
+        -moz-border-radius:5px;
+        border-radius:5px;
+        display:inline-block;
+        font-family:"Fette1451Mittelschrift","Lucida Sans","Lucida Grande","Lucida Sans Unicode",sans-serif;
+        font-size:0;
+        margin:3px;
+        text-shadow:0 1px 0 rgba(255,255,255,.75);
+        text-align:center;
+        text-transform:uppercase;
+    }
+
+    .pagination a {
+        color:#707070;
+        border-right:solid 1px #bcbcbc;
+        display:inline-block;
+        font-size:16px;
+        padding:5px 15px;
+        margin:0;
+        text-decoration:none;
+    }
+    
+    .pagination a:last-child {
+        border-right:none;
+    }
+    
+    .pagination a:hover:last-child {
+        -moz-border-radius-topleft: 0px;
+        -moz-border-radius-topright: 5px;
+        -moz-border-radius-bottomright: 5px;
+        -moz-border-radius-bottomleft: 0px;
+        -webkit-border-radius: 0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
+    }
+    
+    .pagination a:hover:first-child {
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+        -moz-border-radius-bottomleft: 5px;
+        -webkit-border-radius: 5px 0 0 5px;
+        border-radius: 5px 0 0 5px;
+    }
+    
+    .pagination span {
+        border-right:solid 1px #bcbcbc;
+        font-size:16px;
+        padding:5px 15px;
+    }
+    
+    .pagination span.disabled {
+        color:#aaa;
+        display:inline-block;
+    }
+    
+    .pagination a:hover {
+        background:#eee;
+    }
+    
+    .pagination a:active {
+        background:#ddd;
+    }
+    
+    .pagination span.current {
+        color:{color:Body};
+        font-weight:bold;
+    }
+
+footer section.share {
+height:25px;
+}
+
+/* misc */
+
+div.ajaxResult {
+color:#009900;
+font-size:10px;
+margin-bottom:10px;
+}
+
+    div.retweet {
+    background:url("/images/icons/services/twitter11.png") no-repeat scroll left center transparent;
+    display:inline-block;
+    min-height:11px;
+    min-width:1px;
+    padding-left:15px;
+    vertical-align:middle;
+    }
+    
+    .twitter-share-button {
+        float:left;
+    }
+    
+    div.facebook_like {
+        display:inline;
+        float:left;
+        margin-left:5px;
+        position:relative;
+    }
+
+table {
+border:medium none;
+border-spacing:0;
+font-size:11px;
+line-height:16px;
+margin:10px 0 0;
+text-align:left;
+}
+
+    td {
+    border-color:-moz-use-text-color -moz-use-text-color #EEEEEE;
+    border-style:none none solid;
+    border-width:medium medium 1px;
+    margin:0;
+    padding:4px;
+    vertical-align:top;
+    }
+    
+    th {
+    border-color:-moz-use-text-color -moz-use-text-color #CCCCCC;
+    border-style:none none solid;
+    border-width:medium medium 1px;
+    font-weight:bold;
+    padding:4px;
+    text-align:left;
+    vertical-align:bottom;
+    }
+
+hr {
+border:1px solid #DDDDDD;
+margin-bottom:10px;
+margin-top:10px;
+}
+
+div.posterousListComments div.comment, div.posterousAddNewComment div.comment, div.posterousAddNewComment div.comment_value {
+/* margin-left:25px; */
+}
+
+section.private {
+    left:-25px;
+    position:absolute;
+    top:2px;
+}
+
+    article header section.private {
+        min-height:0; /* overwrite default */
+        padding-top:0; /* overwrite default */
+    }
+    
+    section.private:hover div.private_post_message {
+    display:block;
+    }
+    div.private_post_message {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border: solid 1px rgba(0,0,0,.75);
+    background:rgba(0,0,0,.25);
+    color:#fff;
+    display:none;
+    padding:10px;
+    position:absolute;
+    right:-5px;
+    text-align:left;
+    top:-5px;
+    width:100px;
+    }
+    div.private_post_message h1 {
+    float:none;
+    font-size:11px;
+    margin:0 0 5px;
+    padding:0;
+    width:auto;
+    }
+    div.private_post_message p {
+    font-size:10px;
+    margin:0;
+    }
+    
+    div.posterous_retweet_widget {
+    margin:0 0 10px;
+    }
+
+    div#psub_nonuser_div,div#psub_admin_div {
+        font-size:.857em;
+        padding-left:18px;
+    }
+    
+    div#psub_nonuser_div {
+        font-style:italic;
+    }
+    
+        div#psub_nonuser_div a {
+            font-style:normal;
+        }
+    
+    .action_button span {
+        cursor:pointer;
+    }
+    
+    /* cory's response */
+    
+.p_responses_link a,
+.p_response_widget ul li.p_like_link a div.p_like_icon,
+.p_response_widget ul li.p_like_link a div.p_unlike_icon,
+.sharing-button a.btn {
+    background-image:url(/themes/southlake/response2.png) !important;
+    background-repeat:no-repeat;
+}
+
+{block:List}
+
+footer aside.p_responses {
+    position:relative;
+}
+
+    footer aside.p_responses .cw-permalink {
+        left:0;
+        position:absolute;
+        top:0;
+        z-index:10;
+    }
+    
+        footer aside.p_responses .cw-permalink a {
+            display:block;
+            height:37px;
+            width:35px;
+        }
+
+.p_response_widget ul li {
+    background:none !important;
+    margin-right:0 !important;
+    overflow:hidden;
+}
+
+    .p_responses_link,
+    .p_like_link {
+        background:none !important;
+    }
+
+.p_response_widget ul li.p_like_link {
+    margin-left:-10px;
+}
+
+.p_response_widget ul li.p_like_link a {
+    width:14px;
+}
+
+.p_response_widget ul li a, .p_response_widget ul li .loading_comment {
+    color:#b1b1b1;
+    text-align:left;
+}
+    
+    .p_response_widget ul li a {
+        padding:0 0 0 22px;
+    }
+    
+    .p_responses_link a {
+        background-position:0 7px;
+    }
+    
+    .p_response_widget ul li.p_responses_link {
+        min-width:46px;
+        width:46px;
+    }
+{/block:List}
+
+{block:Show}
+
+.p_response_widget ul li {
+    background: #EEEEEE; /* old browsers */
+    background: -moz-linear-gradient(top, #EEEEEE 0%, #D5D5D5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#D5D5D5)); /* webkit */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEEEEE', endColorstr='#D5D5D5',GradientType=0 ); /* ie */
+    background: -o-linear-gradient(top, #EEEEEE 0%,#D5D5D5 100%); /* opera */
+    border:solid 1px #bcbcbc;
+    margin-right:0 !important;
+    overflow:hidden;
+}
+
+    .p_responses_link {
+        -moz-border-radius-topleft:4px !important;
+        -moz-border-radius-bottomleft:4px !important;
+        border-top-left-radius:4px !important;
+        border-bottom-left-radius:4px !important;
+        border-right:solid 1px #b0b0b0 !important;
+        -moz-box-shadow:inset 1px 1px 0 rgba(255,255,255,.75);
+        box-shadow:inset 1px 1px 0 rgba(255,255,255,.75);
+    }
+
+    
+    .p_response_widget ul li.p_responses_link {
+        min-width:60px;
+        width:60px;
+    }
+    
+    .p_comment_form > h1 {
+        border-bottom:solid 1px #ccc;
+    }
+    
+    .p_action_links {
+        left:-65px;
+        top:29px;
+    }
+    
+    .p_comment_form input[type="text"], .p_comment_form textarea {
+        background:#ddd;
+    }
+    
+    .p_response_widget ul li {
+        padding:0;
+    }
+    
+    .p_responses_list .p_info a {
+        text-decoration:none;
+    }
+    
+    .p_responses_list .p_info time, .p_responses_list .p_info .p_time {
+        color:#aaa;
+        font-style:normal;
+    }
+    
+    .p_response_widget ul li a {
+        padding:0 0 0 20px;
+    }
+    
+        .p_responses_link a {
+            background-position:9px 7px;
+            padding-left:25px;
+        }
+        
+            .p_responses_link strong {
+                display:block;
+                padding-bottom:20px;
+            }
+            
+    #articles footer {
+        padding-left:30px;
+        width:500px;
+    }
+    
+    .p_like_link {
+        -moz-border-radius-topleft: 0px;
+        -moz-border-radius-topright: 5px;
+        -moz-border-radius-bottomright: 5px;
+        -moz-border-radius-bottomleft: 0px;
+        -webkit-border-radius: 0px 5px 5px 0px;
+        border-radius: 0px 5px 5px 0px;
+    }
+    
+{/block:Show}
+
+    .p_like_link {
+        border-left:none !important;
+    }
+    
+        .p_like_link a {
+        }
+        
+        .p_response_widget ul li.p_like_link a div.p_like_icon {
+            background-position:0 -39px !important;
+        }
+        
+        .p_response_widget ul li.p_like_link a div.p_unlike_icon {
+            background-position:0 -80px !important;
+        }
+        
+        .p_like_link .like_post .p_unlike_icon,.p_like_link .unlike_post .p_like_icon {
+            display:none !important;
+        }
+        
+        .p_response_widget ul li.p_like_link a.like_post,
+        .p_response_widget ul li.p_like_link a.unlike_post,
+        .p_response_widget ul li.p_like_link a div.p_like_icon,
+        .p_response_widget ul li.p_like_link a div.p_unlike_icon {
+            -webkit-transform:none !important;
+        }
+        
+.p_response_container h1.p_no_responses {
+    color:#999;
+}
+
+    .p_comment_link {
+        display:none;
+    }
+    
+    .p_comment_text p {
+        padding:3px 0 7px;
+    }
+
+{block:List}
+
+    .p_response_widget {
+        display:inline-block;
+        margin-bottom:0 !important;
+    }
+    
+    .p_response_widget ul li:hover {
+        background:none;
+    }
+    
+    .p_response_widget ul li:active, .p_response_widget ul li.active {
+        background:none;
+    }
+
+{/block:List}
+
+    .sharing-button {
+        background:none;
+        display:inline-block;
+        left:-5px;
+        position:relative;
+        top:0;
+    }
+    
+        .sharing-button a.btn {
+            background-position:8px -118px;
+            cursor:auto;
+            display:block;
+            height:14px;
+            padding:8px 9px;
+            width:9px;
+        }
+        
+            .sharing-button:hover {
+                background:none;
+            }
+
+{block:List}
+        .sharing-button .sharing-frame {
+            background:none;
+            height:29px;
+            left:26px;
+            padding-left:5px;
+            position:absolute;
+            top:5px;
+            width:210px;
+            z-index:15;
+        }
+
+{/block:List}
+
+{block:Show}        
+        .sharing-button .sharing-frame {
+            background:none;
+            height:70px;
+            left:-1px;
+            padding:15px 15px 5px;
+            position:absolute;
+            top:30px;
+            width:360px;
+            z-index:15;
+        }
+{/block:Show}
+        
+        .posterous_tweet_button {
+            position:relative;
+            z-index:10;
+        }
+        
+        .posterous_vertical_count .posterous_tweet_count {
+            width:55px;
+        }
+
+#posterous_footerbar,#psub_nonuser_div {display:none !important;}
+
+.p_like_failed {
+    background:#ccc;
+    padding:30px 30px 80px;
+    position:relative;
+    z-index:11;
+}
+
+</style>
+
+
+<!--[if lt IE 9]>
+<style type="text/css">
+
+section#search_results #searchbox {
+border:solid 1px #ccc;
+}
+
+.show-frame {
+    border-top:solid 1px #e1e1e1;
+    border-right:solid 1px #e1e1e1;
+    border-bottom:solid 2px #e1e1e1;
+    border-left:solid 1px #e1e1e1;
+}
+
+{block:List}
+
+article {
+    border-top:solid 1px #e1e1e1;
+    border-right:solid 1px #e1e1e1;
+    border-bottom:solid 2px #e1e1e1;
+    border-left:solid 1px #e1e1e1;
+}
+
+article footer {
+    height:40px;
+}
+
+article footer .sharing-button,
+footer aside.p_responses .p_response_widget {
+    display:block;
+    float:left;
+}
+
+article footer .sharing-button {
+    left:3px;
+    position:relative;
+    top:5px;
+}
+
+.p_like_failed {
+top:-280px;
+}
+
+{/block:List}
+
+</style>
+<![endif]-->
+    
+</head>
+
+<body>
+{block:PosterousHeader /}
+<div class="container">
+
+    {block:NotSearchOrTag}
+      <section id="search">
+        <form class="search">
+          <input type="hidden" name="sort" value="{SearchSort}">
+          <input type="text" name="search" class="text" value="{SearchQuery}" id="searchbox">
+          <input type="submit" value="Search" class="submit" id=" " style="display:none">
+        </form>
+        {block:SearchBox searchbox_button="searchbox_button" searchbox="searchbox"/}
+      </section>
+      <div class="clear"></div>
+    {/block:NotSearchOrTag}
+
+    <header id="page_header">
+        {block:HeaderImage}
+          <h1 class="header_image"><a href="{SiteURL}" title="{Title}" rel="index"><img src="{HeaderImageURL-500}" alt="{Title} - {Description}"></a></h1>
+        {Else}
+            <hgroup>
+                <h1><a href="{SiteURL}" title="{Title}" rel="index">{Title}</a></h1>
+                {block:Description}
+                    <h2>{Description}</h2>
+                {/block:Description}
+            </hgroup>
+        {/block:HeaderImage}
+        {block:HasPages}
+          <nav id="navigation">
+            <ul>
+              {block:Pages}
+                <li><a href="{URL}" class="{Current}" rel="{External}">{Label}</a></li>
+              {/block:Pages}
+            </ul>
+           </nav>
+         {/block:HasPages}
+    </header>
+
+    <div id="post_column">
+        {block:ShowOrList}
+            {block:Show}
+                <section id="extra_links" class="back_to_blog">
+                    <a href="{BlogURL}" rel="up">&larr; back to blog</a>
+                </section>
+            {/block:Show}
+        {/block:ShowOrList}
+            
+        {block:Tag}
+            <section id="filed_under">
+                <h1>Filed under: {Tag}</h1>
+                <div>
+                    <a href="{GlobalTagURL}" style="display:none" id="global_tags">See all posts on Posterous with this tag &raquo;</a>
+                </div>
+                {block:ShowOnHover action_id="extra_links" hidden_div="global_tags"/}
+            </section>
+        {/block:Tag}
+        
+        
+        {block:SearchPage}
+            <section id="search_results">
+                <h1>
+                    {block:SearchResultOne}One result found searching for{/block:SearchResultOne}
+                    {block:SearchResultMany}{SearchResultCount} results found searching for{/block:SearchResultMany}
+                    {block:SearchResultNone}No results found searching for{/block:SearchResultNone}
+                </h1>
+                <form class="search">
+                    <input type="hidden" name="sort" value="{SearchSort}">
+                    <input type="text" name="search" class="text" id="searchbox" value="{SearchQuery}">
+                    <input type="submit" value="Search" class="submit"> <a href="{CurrentURL}" class="xsmall">clear</a>
+                </form>
+                <ul>
+                    <li>Sort by:</li>
+                    <li>{block:SearchSortBestmatch}Best match{Else}<a href="{CurrentURL}?search={SearchQuery}&amp;sort=bestmatch">Best match</a>{/block:SearchSortBestmatch}</li>
+                    <li>{block:SearchSortRecent}Most recent{Else}<a href="{CurrentURL}?search={SearchQuery}&amp;sort=recent">Most recent</a>{/block:SearchSortRecent}</li>
+                    <li>{block:SearchSortInteresting}Most interesting{Else}<a href="{CurrentURL}?search={SearchQuery}&amp;sort=interesting">Most interesting</a>{/block:SearchSortInteresting}</li>
+                </ul>
+                <a href="{PosterousURL}/explore/?search={SearchQuery}" id="search_all" class="xsmall">Search all of Posterous for <strong>{SearchQuery}</strong> &raquo;</a>
+            </section>
+        {/block:SearchPage}
+        
+      <div id="articles">
+      
+{block:Posts}
+    {block:List}
+      <article class="post clearfix" id="post_{PostID}">
+        <header>
+            {block:Private}
+                <section class="private">
+                  <aside>
+                    <a href="{Permalink}" class="tooltip_link"><img src="/images/icons/lock12.png"></a>
+                    <div class="private_post_message">
+                      <h1>Private Post</h1>
+                      <p>This post has a secret URL and not linked on your public blog. Send the secret URL to share it with anyone.</p>
+                    </div>
+                  </aside>
+                </section>
+            {/block:Private}
+            {block:Title}
+                <h1><a href="{Permalink}">{Title}</a></h1>
+            {/block:Title}
+          <div class="editbox">
+            {block:EditBox}
+              {EditBoxContents}
+            {/block:EditBox}
+          </div>
+
+        </header>
+        <div class="body">
+          <div class="inner">
+            {block:PostImage size='100' dimension='width'}
+                    <img src="{PostImageURL}" width='100' height='100' 
+                      style="border: 1px solid #eee; float: left; margin-right: 10px; ">
+                {Else}
+                {/block:PostImage}
+                {block:BodyExcerpt excerpt_size='270' strip_tags="true"}  
+                    <div class="excerpt">{BodyExcerpt}</div>
+                    {block:BodyExcerptReadMore}  
+                        <a href="{Permalink}#more">read more &rarr;</a>
+                    {/block:BodyExcerptReadMore}
+                    <div class="clear"></div>  
+                {/block:BodyExcerpt}
+          </div>
+        </div>
+        
+        <footer>
+            
+            {block:Responses}
+                {block:ResponsesList}
+                    <div class="cw-permalink"><a href="{Permalink}"></a></div>
+                    {ResponseWidget}
+                            <div id="sharing-button_{PostID}" class="sharing-button"><a href="#" class="btn"></a>
+                                <div id="sharing-frame_{PostID}" class="sharing-frame" style="display: none;">
+                                    {block:Sharing}
+                                      <section class="share">
+                                        {block:Tweet /}
+                                        <div class="facebook_like">{block:FbLike layout="button_count" /}</div>
+                                      </section>
+                                    {/block:Sharing}
+                                </div>
+                            </div>
+                        
+                        {block:ShowOnHover action_id='sharing-button_{PostID}' hidden_div='sharing-frame_{PostID}'/}
+                {/block:ResponsesList}
+            {/block:Responses}
+            
+        </footer>
+
+      </article>
+    {/block:List}
+    
+    {block:Show}
+        <div class="show-frame">
+            <table cellpadding="0" cellspacing="0" border="0" width="1066" class="show-table">
+                <tr valign="top">
+                    <td width="770" class="left-col">
+                    
+                        <article class="post clearfix" id="post_{PostID}">
+                            <header>
+                                {block:Private}
+                                    <section class="private">
+                                      <aside>
+                                        <a href="{Permalink}" class="tooltip_link"><img src="/images/icons/lock12.png"></a>
+                                        <div class="private_post_message">
+                                          <h1>Private Post</h1>
+                                          <p>This post has a secret URL and not linked on your public blog. Send the secret URL to share it with anyone.</p>
+                                        </div>
+                                      </aside>
+                                    </section>
+                                {/block:Private}
+                                {block:Title}
+                                    <h1><a href="{Permalink}">{Title}</a></h1>
+                                {/block:Title}
+                                {block:SMS}
+                                    <aside class="sms">Posted from my mobile phone (SMS)</aside>
+                                {/block:SMS}
+                              <div class="editbox">
+                                {block:EditBox}
+                                  {EditBoxContents}
+                                {/block:EditBox}
+                              </div>
+                
+                            </header>
+                            <div class="body">
+                              <div class="inner">
+                                {Body}
+                              </div>
+                            </div>
+                
+                          </article>
+              
+                    </td>
+                    <td width="250" class="right-rail">
+                    
+                      <a href="http://conepatrol.com" title="free powder alerts"><img src="https://lh5.googleusercontent.com/-9uZo4l-Cc6U/Tw3M6ALvhpI/AAAAAAAACjs/_OLaZU24YmI/w240/peeps-small.png" style="border: 0" /></a>
+                        <section id="profile" style="padding-left:0;">
+                          <div class="profile">
+                            <p>{Profile}</p>
+                          </div>
+                          <div class="external">{ProfileExternalLinks}</div>
+                        </section>
+                        
+                        {block:HasLinks}
+                          {block:LinkCategories}
+                            <section class="links">
+                              <h1>{Label}</h1>
+                              <ul>
+                                {block:Links}
+                                  <li><a href="{URL}" rel="external">{Label}</a></li>
+                                {/block:Links}
+                              </ul>
+                            </section>
+                          {/block:LinkCategories}
+                        {/block:HasLinks}
+
+                            
+                        {block:HasArchives}
+                          <section id="archives">
+                            <h1>Archive</h1>
+                             {block:ArchiveYear}
+                                <div class="year"><a href="#" id="{ArchiveYearId}">{ArchiveDateYear}</a> <span class="instances">({ArchiveYearCount})</span></div>
+                                  <div id="{ArchiveMonthsId}" style="display:none;">
+                                    <div>                      
+                                      {block:Archive}                              
+                                          <div class="inner"><a href="{ArchiveLink}">{ArchiveMonth}</a> <span class="instances">({ArchiveCount})</span></div>
+                                      {/block:Archive}
+                                    </div>
+                                  </div>
+                            {/block:ArchiveYear}
+                          </section>
+                        {/block:HasArchives}
+                            
+                        {block:Contributors}
+                          <section id="contributors">
+                            
+                          </section>
+                        {/block:Contributors}
+                    
+                    </td>
+                </tr>
+            </table>
+
+              
+         </div><!-- /.show-frame -->
+                
+        <footer>
+    
+                <section id="statistics" class="author locations">
+                    {block:NewDayDate}
+                      <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}" pubdate="pubdate"><a href="{Permalink}">Posted {TimeAgo}</a></time>
+                    {/block:NewDayDate}
+
+                    {block:PostLocations}
+                      <h1 id="location_collapsed_{PostID}">from <a href="#" id="post_location_expander_{PostID}" onClick="return false;">{LocationsSummary}</a></h1>
+                      <div class="location_detail" style="display:none" id="post_location_expanded_{PostID}">
+                        <div class="map">
+                          {MapIframe}
+                        </div>
+                        <div class="summary">
+                          <h2>Posted from</h2>
+                          <ul>
+                            {block:PostLocation uniq_by="summary"}
+                              <li>{LocationSummary}</li>
+                            {/block:PostLocation}
+                          </ul>
+                        </div>
+                      </div>
+                      {block:ShowOnClick action_id="post_location_expander_{PostID}" hidden_div="post_location_expanded_{PostID}" to_hide_id="location_collapsed_{PostID}"/}
+                  {/block:PostLocations}
+                    {block:ShowOrList}
+                      |
+                    Viewed {PostViews} times
+                    {/block:ShowOrList}
+                </section>
+        
+            {block:TagList}
+                <section class="tags">
+                    Filed under:
+                    {block:TagListing}
+                        <a href="{TagLink}" rel="tag">{TagName}</a>&nbsp;
+                    {/block:TagListing}
+                </section>
+            {/block:TagList}
+    
+        {block:Sharing}
+          <section class="share">
+            {block:Tweet /}
+            <div class="facebook_like">{block:FbLike /}</div>
+          </section>
+        {/block:Sharing}
+        
+        {block:Responses}
+            
+            {block:ResponsesShow}
+                {ResponseWidget}                            
+                {Responses}
+                {ResponseForm}
+            {/block:ResponsesShow}
+        {/block:Responses}
+        
+        </footer>
+    {/block:Show}
+{/block:Posts}
+
+        <div class="clear"></div>
+      </div>
+        <footer id="pagination">
+          {block:Pagination/}
+        </footer>
+    </div><!-- /#post_column -->
+</div><!-- /.container -->
+
+{block:List}                
+<aside id="sidebar"><div class="sidebar-container">
+        <section id="profile" class="column" style="padding-left:0;width:500px;">
+          <h1>
+            <a href="{ProfileLink}" title="{OwnerName}'s profile">
+              <img src="{PortraitURL-75}" alt="{OwnerName}" class="profile_image">
+            </a>
+          </h1>
+          <a href="{ProfileLink}" class="profile-link"><strong>{OwnerName}</strong></a>
+          <div class="profile">
+            <p>{Profile}</p>
+          </div>
+          <div class="external">{ProfileExternalLinks}</div>
+        </section>
+
+        <div class="column">
+        
+            {block:HasLinks}
+              {block:LinkCategories}
+                <section class="links">
+                  <h1>{Label}</h1>
+                  <ul>
+                    {block:Links}
+                      <li><a href="{URL}" rel="external">{Label}</a></li>
+                    {/block:Links}
+                  </ul>
+                </section>
+              {/block:LinkCategories}
+            {/block:HasLinks}
+        
+            {block:Subscription}
+              <section id="subscriptions">
+                <h1>Subscribe...</h1>
+                
+                {block:SubscriptionUnsubscribed action_id="subscribe_link" content_div="subscribe"}
+                  <div id="subscribe">
+                    <a href="{SubscribeLink}" id="subscribe_link">Subscribe to this Posterous</a>
+                  </div>
+                {/block:SubscriptionUnsubscribed}
+                {block:SubscriptionSubscribed action_id="unsubscribe_link" content_div="unsubscribe"}
+                  <div id="unsubscribe">
+                    <a href="{UnsubscribeLink}" id="unsubscribe_link">Unsubscribe</a>
+                  </div>
+                {/block:SubscriptionSubscribed}
+                {block:SubscriptionLoading}
+                    <div class="loading"></div>
+                {/block:SubscriptionLoading}
+              </section>
+            
+              <section id="rss">
+                <a href="{RSS}" rel="alternate" type="application/rss+xml">Subscribe via RSS</a>
+              </section>
+            {/block:Subscription}
+            
+            {block:HasArchives}
+              <section id="archives">
+                <h1>Archive</h1>
+                 {block:ArchiveYear}
+                    <div class="year"><a href="#" id="{ArchiveYearId}">{ArchiveDateYear}</a> <span class="instances">({ArchiveYearCount})</span></div>
+                      <div id="{ArchiveMonthsId}" style="display:none;">
+                        <div>                      
+                          {block:Archive}                              
+                              <div class="inner"><a href="{ArchiveLink}">{ArchiveMonth}</a> <span class="instances">({ArchiveCount})</span></div>
+                          {/block:Archive}
+                        </div>
+                      </div>
+                {/block:ArchiveYear}
+              </section>
+            {/block:HasArchives}
+            
+            {block:Contributors}
+              <section id="contributors">
+                
+              </section>
+            {/block:Contributors}
+        </div>
+        
+        <div class="column">
+            {block:TagList}
+              <section id="tags">
+                <h1>Tags</h1>
+                <ul>
+                  {block:TagListing collapsible="true" count="10" action_id="see_more_tags"}
+                    {block:TagListingMore}
+                      <li><a href="#" id="see_more_tags">View all {NumTags} tags &raquo;</a></li>
+                    {/block:TagListingMore}
+                    {block:TagItem}
+                      <li><a href="{TagLink}">{TagName}</a> <span>({TagCount})</span></li>
+                    {/block:TagItem}
+                    {block:TagItemSelected}
+                      <li class="selected"><a href="{TagLink}">{TagName}</a> <span>({TagCount})</span></li>
+                    {/block:TagItemSelected}
+                  {/block:TagListing}
+                </ul>
+              </section>
+            {/block:TagList}
+        </div>
+        
+        <div class="clear"></div>
+    </div><!-- /.sidebar-container -->
+</aside>
+{/block:List}
+
+{block:Show}
+<div class="cw"><a href="http://themes.watilo.com" target="_blank">Posterous theme</a> by <a href="http://watilo.com" target="_blank">Cory Watilo</a></div>
+{/block:Show}
+</body>
+</html>

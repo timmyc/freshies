@@ -42,9 +42,9 @@ div.stat{ width: 100%; margin: 5px auto 5px auto; border-top: 1px solid #ccc; pa
   div.stat span.value { font-family: 'Lato', sans-serif; text-shadow: 2px 2px 0 #ccc; font-size: 64px; display: block; line-height: 84px; }
   div.sub{ text-align: center }
   div.sub a { color: #fff; text-decoration: none }
-  span.desc { display: block; width: 100%; font: 26px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: bold }
+  span.desc { display: block; width: 100%; font: 22px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: uppercase; font-weight: bold }
   span.threshold { text-align: center; display: block; width: 100%; font-family: 'Lato', sans-serif; text-shadow: 2px 2px 0 #333; font-size: 84px; display: block; line-height: 84px; }
-  span.area { text-align: center; display: block; width: 100% }
+  span.area { text-align: center; display: block; width: 100%; font-weight: bold }
 
 textarea.message { margin-bottom: 0 }
 span.countdown{ display: block; width: 100%; clear: left; margin-bottom: 10px; font-size: 12px }

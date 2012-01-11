@@ -55,3 +55,17 @@
   <% end -%>
   </div>
   </div>
+  <div class="sixteen columns">
+    <h3>Latest Conditions</h3>
+  </div>
+    <% @areas.each do |area| -%>
+    <% report = area.snow_reports.empty? ? false : area.snow_reports.last -%>
+    <% next unless report -%>
+    <div class="one-third column">
+      <div class="alert-notice sub">
+      <span class="desc"><%= area.name %></span>
+      <span class="threshold"><%= report.snowfall_twelve %>&quot;</span>
+      <span class="area"><%= report.base_temp %> &deg; &amp; <%= report.base_depth %>" Base @ <%= report.report_time.to_s(:short) %></span>
+      </div>
+    </div>
+  <% end -%>

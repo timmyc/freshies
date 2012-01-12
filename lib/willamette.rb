@@ -29,7 +29,7 @@ class Willamette
       :snowfall_twelve => table_data[:"12_hour_snowfall"].to_i,
       :snowfall_twentyfour => table_data[:"24_hour_snowfall"].to_i,
       :base_temp => table_data[:temperature].to_i,
-      :base_mid => table_data[:snow_level_at_midway].to_i,
+      :mid_temp => table_data[:snow_level_at_midway].to_i,
       :base_depth => table_data[:snow_level_at_lodge].to_i
     }
   end

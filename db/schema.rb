@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106051011) do
+ActiveRecord::Schema.define(:version => 20120116001059) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(:version => 20120106051011) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "subscription_id"
+    t.date     "date_sent"
   end
+
+  add_index "alerts", ["date_sent"], :name => "index_alerts_on_date_sent"
 
   create_table "areas", :force => true do |t|
     t.string   "name"
@@ -110,6 +113,9 @@ ActiveRecord::Schema.define(:version => 20120106051011) do
     t.datetime "updated_at"
     t.string   "intro"
     t.string   "gender"
+    t.integer  "hour"
   end
+
+  add_index "subscriptions", ["hour"], :name => "index_subscriptions_on_hour"
 
 end

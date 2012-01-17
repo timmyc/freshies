@@ -18,7 +18,7 @@ class Shredder < ActiveRecord::Base
   validates_uniqueness_of :mobile, :scope => :area_id
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
   GREETS = ['SICKBURD','Gaper','Powderpuff','Powstar','Child of Ullr','Brah','Bro','Gnarsef','Brosef','Sickter','Shredder','Gaper Gapper','Shredhead','Freshie Fiend','Snow Bunny','Snow Angel','Conehead']
-  DEFAULT_MESSAGE = 'FRESHIEZ! {{area}} is reporting {{new_snow}}" in the last 12 hours. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
+  DEFAULT_MESSAGE = 'FRESHIEZ! {{area}} is reporting {{new_snow}}" of new snow. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
 
   def send_confirmation
     Twilio.connect(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)

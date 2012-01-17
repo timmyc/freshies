@@ -12,6 +12,28 @@ describe Alert do
     @alert.save
   end
 
+  context 'date sent' do
+    before do
+      @alert = Factory.build(:alert)
+    end
+
+    it "should have the column" do
+      @alert.should respond_to(:date_sent)
+    end
+
+    it "should populate the value on create" do
+      @alert.save
+      @alert.date_sent.should eql(Time.now.to_date)
+    end
+
+    it "should return the proper records for for_subscription_date" do
+      Alert.for_subscription_date(Time.now.to_date,@alert.subscription_id).size.should eql(0)
+      @alert.save
+      Alert.for_subscription_date(Time.now.to_date,@alert.subscription_id).size.should eql(1)
+    end
+
+  end
+
   context 'alert types' do
     before do
       @area = Factory.create(:area)

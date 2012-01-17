@@ -11,11 +11,11 @@ class SnowReport < ActiveRecord::Base
   end
 
   def send_notifications
-    if self.first_report 
-      subscriptions = Subscription.for_inches_area(self.snowfall_twelve,self.area_id)
-      subscriptions.each do |s|
-        self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id, :subscription_id => s.id)
-      end
+    subscriptions = Subscription.for_inches_area(self.snowfall_twelve,self.area_id)
+    alerts_sent = Alert.for_area_date(self.report_time.to_date, self.area_id).collect{|a| a.subscription_id }
+    subscriptions.each do |s|
+      next if alerts_sent.include?(s.id)
+      self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id, :subscription_id => s.id)
     end
   end
 

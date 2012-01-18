@@ -11,6 +11,10 @@
     </div>
   <% end %>
   <h3>New <%= @subscription.description %></h3>
+  <% if @subscription.instance_of?(VoiceSubscription) -%>
+  <p>Welcome to the super hot, super beta new feature at conepatrol.com: Voice Alerts!  These work just like the Text Alert, except, instead of sending a text, the robot calls you!</p>
+  <p>Yesiree, you get a POWDER WAKE UP CALL.  You can even choose some intro music to get STOKED, and of course you can customize the message and have that sweet robotic voice tell you how awesome you are... because you *are* awesome!</p>
+  <% end -%>
     <%= form_for(@subscription, :as => 'subscription') do |f| %>
       <%= f.label :area_id, 'Ski Area:' %>
       <%= f.select :area_id, Area.active.collect{|i| [i.name,i.id]}, {:include_blank => false} %>

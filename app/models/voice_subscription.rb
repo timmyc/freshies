@@ -1,8 +1,9 @@
 class VoiceSubscription < Subscription
   GENDERS = ['male','female']
-  INTROS = ['kids']
+  INTROS = ['kids','cant-touch-this','dont-stop','paradise-city','rocky-theme','tunak-tunak','waiting-room']
   validates_inclusion_of :gender, :in => GENDERS 
   validates_inclusion_of :intro, :in => INTROS, :allow_nil => true
+  validates_uniqueness_of :area_id, :scope => :shredder_id, :message => 'is already being used in another one of your subscriptions'
 
   def self.intros
     return INTROS

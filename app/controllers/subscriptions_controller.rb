@@ -11,7 +11,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
-    @subscription = TextSubscription.new
+    if request.path.include?('voice_subscription')
+      @subscription = VoiceSubscription.new
+    else
+      @subscription = TextSubscription.new
+    end
   end
 
   def show
@@ -19,7 +23,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = current_shredder.text_subscriptions.new(params[:subscription])
+    if request.path.include?('voice_subscription')
+      @subscription = current_shredder.voice_subscriptions.new(params[:subscription])
+    else
+      @subscription = current_shredder.text_subscriptions.new(params[:subscription])
+    end
     if @subscription.save
       flash[:notice] = "Your new subscription has been saved"
       redirect_to subscriptions_url

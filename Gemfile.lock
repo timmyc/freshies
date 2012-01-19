@@ -71,6 +71,7 @@ GEM
       libxml-ruby (~> 2.0)
     highline (1.6.8)
     hike (1.2.1)
+    hominid (3.0.2)
     httparty (0.8.1)
       multi_json
       multi_xml
@@ -192,6 +193,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   happymapper
+  hominid
   jquery-rails
   json
   mustache

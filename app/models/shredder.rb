@@ -38,6 +38,11 @@ class Shredder < ActiveRecord::Base
   def active_subscriptions
     self.subscriptions.find(:all, :conditions => {:active => true})
   end
+
+  def chimp
+    h = Hominid::API.new(Cone::Application.config.mail_chimp_token)
+    h.list_subscribe(Cone::Application.config.mail_chimp_list, self.email,{},'text', false, true, true, false)
+  end
   
   private
 

@@ -35,5 +35,7 @@ Cone::Application.configure do
   config.twilio_number = ENV['TWILIO_NUMBER']
   config.mtb_key = ENV['MTB_KEY']
   config.mtb_secret = ENV['MTB_SECRET']
+  config.mail_chimp_token = ENV['MAIL_CHIMP_TOKEN']
+  config.mail_chimp_list = ENV['MAIL_CHIMP_LIST']
   
 end

@@ -25,10 +25,9 @@ class Hoodoo
     #{:lifts_open=>" ed, manzanita, easy rider", :runs_open=>"75%", :new_snow=>"1\"", :autobahn_tubing=>"closed m - th", :snow_depth=>"20.8\"", :snow_bunny_sled_hill=>"closed", :weather=>"snowing", :temp_lodge=>"32", :temp_peak=>"26"}
     self.readings = {
       :report_time => Time.zone.parse(updated),
-      :snowfall_twelve => table_data[:new_snow].to_i,
-      :base_temp => table_data[:temp_lodge].to_i,
-      :summit_temp => table_data[:temp_peak].to_i,
-      :base_depth => table_data[:snow_depth].to_i
+      :snowfall_twelve => table_data[:"new_snow:_12_hours"].to_i,
+      :base_temp => table_data[:templodge].to_i,
+      :base_depth => table_data[:depth].to_i
     }
   end
 

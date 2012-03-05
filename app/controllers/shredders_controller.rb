@@ -3,7 +3,7 @@ class ShreddersController < ApplicationController
 
   def home 
     @shredder = Shredder.new
-    @areas = Area.find(:all, :include => [:snow_reports], :order => 'name asc')
+    @areas = Area.find(:all, :conditions => {:active => true}, :include => [:snow_reports], :order => 'name asc')
   end
 
   def confirm

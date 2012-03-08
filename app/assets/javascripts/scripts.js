@@ -1,6 +1,7 @@
 $(document).ready(function() {
   function updateCountdown() {
     var message = $('.message');
+    if(message && message.val()){
     var chars = message.val().length;
     var text = message.val();
     var limit = message.attr('data-max');
@@ -10,12 +11,7 @@ $(document).ready(function() {
       var new_text = text.substr(0, limit);
       message.val(new_text);
     }
-  };
-
-  function updatePreview(){
-    var message = $('.message');
-    var h = Mustache.to_html(message.val(), demoData);
-    $('#preview-window').html(h);
+    };
   };
 
   var demoDataOld = {
@@ -28,6 +24,14 @@ $(document).ready(function() {
     report_time: '06:15 12-28-11'
   };
 
+  function updatePreview(){
+    var message = $('.message');
+    if(message && message.val()){
+    var h = Mustache.to_html(message.val(), demoDataOld);
+    $('#preview-window').html(h);
+    }
+  };
+
   if($('.message')){
     updateCountdown();
     updatePreview();
@@ -35,4 +39,10 @@ $(document).ready(function() {
     $('.message').keyup(updateCountdown);
     $('#preview').click(updatePreview);
   };
+
+    $('div.areahome').click(function(o,t){
+      $('html,body').animate({scrollTop:$('#signupform').offset().top}, 500);
+      $("#shredder_email").focus()
+      $("#shredder_area_id").val($(this).attr('data-area'));
+    });
 })

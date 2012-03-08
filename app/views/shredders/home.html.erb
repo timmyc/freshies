@@ -1,3 +1,18 @@
+<div class="sixteen columns">
+    <h3>Create Powder A New Alert For:</h3>
+  </div>
+    <% @areas.each do |area| -%>
+    <% report = area.snow_reports.empty? ? false : area.snow_reports.last -%>
+    <% next unless report -%>
+    <div class="one-third column">
+      <div class="alert-notice sub areahome" data-area="<%= area.id %>">
+      <span class="desc"><%= area.name %></span>
+      <span class="threshold"><%= report.snowfall_twelve %>&quot;</span>
+      <span class="area"><%= report.base_temp %> &deg; &amp; <%= report.base_depth %>" Base @ <%= report.report_time.to_s(:short) %></span>
+      </div>
+    </div>
+     <% end -%>
+<div class="sixteen columns"></div>  
 <div class="one-third column">
   <div class="shimmed">
     <h3>Cone Patrol?</h3>
@@ -18,8 +33,9 @@
   </div>
   <div class="one-third column">
     <div class="highlight shimmed">
+      <a name="signup" id="signupform"></a>
       <% if !shredder_signed_in? -%>
-    <h3>Sign Up!</h3>
+        <h3>Sign Up!</h3>
     <p>Signing up is super simple, and free!  Fill out this form, and we'll send you a confirmation text.  Its as easy as snowboarding!</p>
     <p>Enter your mobile number (10 digits no dashes/spaces), and select the new snow threshold to trigger an alert.</p>
     <%= form_for @shredder do |f| %>
@@ -55,17 +71,3 @@
   <% end -%>
   </div>
   </div>
-  <div class="sixteen columns">
-    <h3>Latest Conditions</h3>
-  </div>
-    <% @areas.each do |area| -%>
-    <% report = area.snow_reports.empty? ? false : area.snow_reports.last -%>
-    <% next unless report -%>
-    <div class="one-third column">
-      <div class="alert-notice sub">
-      <span class="desc"><%= area.name %></span>
-      <span class="threshold"><%= report.snowfall_twelve %>&quot;</span>
-      <span class="area"><%= report.base_temp %> &deg; &amp; <%= report.base_depth %>" Base @ <%= report.report_time.to_s(:short) %></span>
-      </div>
-    </div>
-  <% end -%>

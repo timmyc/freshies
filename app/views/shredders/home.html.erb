@@ -1,4 +1,5 @@
 <div class="sixteen columns">
+  <% if Cone::Application.config.in_season -%>
     <h3>Create Powder A New Alert For:</h3>
   </div>
     <% @areas.each do |area| -%>
@@ -11,7 +12,14 @@
       <span class="area"><%= report.base_temp %> &deg; &amp; <%= report.base_depth %>" Base @ <%= report.report_time.to_s(:short) %></span>
       </div>
     </div>
-     <% end -%>
+  <% end -%>
+<% else -%>
+  <h3>Well That Was Sick!</h3>
+  <p>Although Ullr was a bit late to the party this year, it turned out to be a pretty rad season... even up until that last storm during closing weekend at Bachelor!</p>
+  <p>We at conepatrol.com are going to put on the storage wax for now, and work on some new features for next season.  Stay tuned, and stay stoked.</p>
+  <hr>
+</div>
+<% end -%>
 <div class="sixteen columns"></div>  
 <div class="one-third column">
   <div class="shimmed">

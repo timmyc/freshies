@@ -48,5 +48,6 @@ module Cone
     config.twilio_sid = ''
     config.twilio_auth = ''
     config.twilio_number = ''
+    config.in_season = false
   end
 end

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116001059) do
+ActiveRecord::Schema.define(:version => 20121004133823) do
 
   create_table "alerts", :force => true do |t|
     t.integer  "shredder_id"
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120116001059) do
     t.datetime "updated_at"
     t.integer  "subscription_id"
     t.date     "date_sent"
+    t.integer  "promo_id"
   end
 
   add_index "alerts", ["date_sent"], :name => "index_alerts_on_date_sent"
@@ -52,9 +54,20 @@ ActiveRecord::Schema.define(:version => 20120116001059) do
     t.string   "locked_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "queue"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "promos", :force => true do |t|
+    t.integer  "area_id"
+    t.string   "message"
+    t.integer  "impressions", :default => 0
+    t.integer  "total_sent",  :default => 0
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "shredders", :force => true do |t|
     t.text     "mobile"
@@ -78,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120116001059) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "gcm_id"
   end
 
   add_index "shredders", ["confirmation_token"], :name => "index_shredders_on_confirmation_token", :unique => true

@@ -23,6 +23,10 @@ Cone::Application.routes.draw do
   resources :text_subscriptions, :controller => 'subscriptions'
   resources :voice_subscriptions, :controller => 'subscriptions'
 
+  namespace :api do
+    resources :android
+  end
+
   # Sample resource route with options:
   #   resources :products do
   #     member do

@@ -4,7 +4,7 @@ describe SnowReportsController do
 
   describe "POST" do
     before do
-      @area = Factory.create(:area)
+      @area = FactoryGirl.create(:area)
     end
     it "returns http failure without credentials" do
       post 'create'

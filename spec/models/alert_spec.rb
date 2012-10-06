@@ -7,14 +7,14 @@ describe Alert do
   it{ should belong_to(:subscription) }
 
   it "should call send_message after_create" do
-    @alert = Factory.build(:alert)
+    @alert = FactoryGirl.build(:alert)
     @alert.should_receive(:deliver)
     @alert.save
   end
 
   context 'date sent' do
     before do
-      @alert = Factory.build(:alert)
+      @alert = FactoryGirl.build(:alert)
     end
 
     it "should have the column" do
@@ -36,15 +36,15 @@ describe Alert do
 
   context 'alert types' do
     before do
-      @area = Factory.create(:area)
-      @shredder = Factory.create(:shredder, :area => @area)
+      @area = FactoryGirl.create(:area)
+      @shredder = FactoryGirl.create(:shredder, :area => @area)
       @shredder.mobile_confirm
-      @snow_report = Factory.build(:snow_report, :area => @area, :report_time => Time.now)
+      @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now)
     end
     
     context 'TextSubscriptions' do
       it "should create an alert for a text subscription" do
-        expect{ @snow_report.save }.should change(Alert, :count).by(1)
+        expect{ @snow_report.save }.to change(Alert, :count).by(1)
       end
 
       it "should create the correct type of alert" do
@@ -64,7 +64,7 @@ describe Alert do
         @snow_report.save
         @alert = Alert.last
         @alert.send_message
-        Twilio::Sms.should_receive(:message).exactly(0).times.and_return(true)
+        Twilio::Sms.should_not_receive(:message)
         @alert.send_message
       end
     end

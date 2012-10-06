@@ -4,7 +4,7 @@ describe ShreddersController do
 
   describe "GET" do
     before do
-      @shredder = Factory.create(:shredder, :confirmed_at => Time.now)
+      @shredder = FactoryGirl.create(:shredder, :confirmed_at => Time.now)
     end
     
     it "should not allow access to confirm page unless logged in" do

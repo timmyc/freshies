@@ -7,7 +7,7 @@ describe TextSubscription do
   it{ should validate_uniqueness_of(:area_id).scoped_to(:shredder_id).with_message('is already being used in another one of your subscriptions') }
   
   before do
-    @shredder = Factory.create(:shredder)
+    @shredder = FactoryGirl.create(:shredder)
     @shredder.mobile_confirm
     @text_subscription = @shredder.text_subscriptions.first
   end

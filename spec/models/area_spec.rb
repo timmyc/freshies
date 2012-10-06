@@ -11,7 +11,7 @@ describe Area do
 
   describe 'secret' do
     before do
-      @area = Factory.create(:area)
+      @area = FactoryGirl.create(:area)
     end
 
     it "should auto generate" do
@@ -25,7 +25,7 @@ describe Area do
 
   describe 'key' do
     before do
-      @area = Factory.create(:area)
+      @area = FactoryGirl.create(:area)
     end
     
     it "should auto generate" do

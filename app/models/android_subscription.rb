@@ -18,6 +18,11 @@ class AndroidSubscription < Subscription
   end
 
   def send_message(alert)
-  
+    report = alert.snow_report
+    message = Mustache.render(self.message, report.alert_attributes)
+    gcm = GCM.new(Cone::Application.config.gcm_key)
+    registration_ids= [self.shredder.gcm_id]
+    options = {data: {message: message}, collapse_key: "updated_score"}
+    response = gcm.send_notification(registration_ids, options)
   end
 end

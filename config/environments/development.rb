@@ -33,6 +33,7 @@ Cone::Application.configure do
   config.twilio_sid = ENV['TWILIO_SID']
   config.twilio_auth = ENV['TWILIO_AUTH']
   config.twilio_number = ENV['TWILIO_NUMBER']
+  config.gcm_key = ENV['GCM_KEY']
   config.mtb_key = ENV['MTB_KEY']
   config.mtb_secret = ENV['MTB_SECRET']
   config.mail_chimp_token = ENV['MAIL_CHIMP_TOKEN']

@@ -63,6 +63,9 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
+    gcm (0.0.2)
+      httparty
+      json
     girl_friday (0.10.0)
       connection_pool (~> 0.9.0)
     happymapper (0.4.0)
@@ -186,6 +189,7 @@ DEPENDENCIES
   devise
   execjs
   factory_girl_rails
+  gcm
   happymapper
   hominid
   jquery-rails

@@ -21,6 +21,7 @@ class Shredder < ActiveRecord::Base
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
   GREETS = ['SICKBURD','Gaper','Powderpuff','Powstar','Child of Ullr','Brah','Bro','Gnarsef','Brosef','Sickter','Shredder','Gaper Gapper','Shredhead','Freshie Fiend','Snow Bunny','Snow Angel','Conehead']
   DEFAULT_MESSAGE = 'FRESHIEZ! {{area}} is reporting {{new_snow}}" of new snow. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
+  GCM_MESSAGE = '{{area}} has {{new_snow}}" of new snow!'
 
   def self.find_or_create_from_android(params)
     shredder = self.find_by_gcm_id(params[:gcm_id])
@@ -34,7 +35,7 @@ class Shredder < ActiveRecord::Base
       shredder.area_id = params[:area_id]
       shredder.inches = params[:inches]
       shredder.save
-      shredder.android_subscriptions.create(:inches => shredder.inches, :area_id => shredder.area_id, :active => true, :message => DEFAULT_MESSAGE)
+      shredder.android_subscriptions.create(:inches => shredder.inches, :area_id => shredder.area_id, :active => true, :message => GCM_MESSAGE)
     end
     return shredder
   end

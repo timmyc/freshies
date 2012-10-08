@@ -20,6 +20,7 @@ gem 'therubyracer'
 gem 'thin'
 gem 'twilio'
 gem 'ullr', '>= 0.1.3'
+gem 'uglifier'
 
 group :assets do
 end

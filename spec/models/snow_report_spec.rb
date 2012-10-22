@@ -1,15 +1,18 @@
 require 'spec_helper'
 
 describe SnowReport do
+  include ShredderHelper
   it{ should belong_to(:area) }
   it{ should have_many(:alerts) }
   it{ should validate_presence_of(:report_time) }
   it{ should validate_presence_of(:area_id) }
   before do
     @area = FactoryGirl.create(:area)
+    stub_twilio_confirmation
     @shredder = FactoryGirl.create(:shredder, :area => @area)
     @shredder.mobile_confirm
     @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now)
+    stub_twilio_confirmation
     @shredder2 = FactoryGirl.create(:shredder, :area => @area, :inches => 8)
     @shredder2.mobile_confirm
   end
@@ -79,6 +82,7 @@ describe SnowReport do
       }.to change(@snow_report2.alerts, :size).by(0)
     end
     it "should only send alerts to shredders that want to be notified" do
+      stub_twilio_confirmation
       @shredder2 = FactoryGirl.create(:shredder, :area => @area, :inches => 10, :email => 'jah@brah.com', :mobile => '4513501234')
       @shredder2.mobile_confirm
       @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
@@ -103,6 +107,34 @@ describe SnowReport do
       expect {
         @snow_report4.save
       }.to change(@snow_report4.alerts, :size).by(0)
+    end
+    
+    context "numbers" do
+      it "should set a nil number_id when area has no numbers" do
+        @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
+        @snow_report.save
+        @alert = @snow_report.alerts.first
+        @alert.number.should be_nil
+      end
+
+      it 'should set a number if the area has a number' do
+        @number = @area.numbers.create(:inbound => '+15558675309')
+        @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
+        @snow_report.save
+        @alert = @snow_report.alerts.first
+        @alert.number.should eql(@number)
+      end
+
+      it 'should cycle through the numbers when multiple numbers are available' do
+        stub_twilio_confirmation
+        @shredder3 = FactoryGirl.create(:shredder, :area => @area, :inches => 7, :email => 'jaaah@brah.com', :mobile => '4513501239')
+        @shredder3.mobile_confirm
+        @number1 = @area.numbers.create(:inbound => '+15558675309')
+        @number2 = @area.numbers.create(:inbound => '+15558675308')
+        @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 8)
+        @snow_report.save
+        @snow_report.alerts.collect{|i| i.number }.should eql([@number1,@number2,@number1])
+      end
     end
   end
 end

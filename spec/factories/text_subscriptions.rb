@@ -6,6 +6,6 @@ FactoryGirl.define do
     area_id ""
     inches ""
     type ""
-    message 'FRESHIEZ! Bachy is reporting {{new_snow}}" in the last 12 hours. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
+    message 'FRESHIEZ! Bachy is reporting {{new_snow}}" in the last 12 hours.'
   end
 end

@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 describe ShreddersController do
-
+  include ShredderHelper
   describe "GET" do
     before do
-      @shredder = FactoryGirl.create(:shredder, :confirmed_at => Time.now)
+      @area = FactoryGirl.create(:area)
+      stub_twilio_confirmation
+      @shredder = FactoryGirl.create(:shredder, :confirmed_at => Time.now, :area => @area)
     end
     
     it "should not allow access to confirm page unless logged in" do

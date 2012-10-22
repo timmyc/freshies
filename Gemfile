@@ -19,11 +19,18 @@ gem 'jquery-rails'
 gem 'json'
 gem 'therubyracer'
 gem 'thin'
-gem 'twilio'
+gem 'twilio-ruby'
 gem 'ullr', '>= 0.1.3'
 gem 'uglifier'
 
+#active admin
+gem 'activeadmin'
+gem 'sass-rails'
+gem "meta_search",    '>= 1.1.0.pre'
+
+
 group :assets do
+  gem 'coffee-rails'
 end
 
 group :test, :development do

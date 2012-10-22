@@ -1,0 +1,3 @@
+ActiveAdmin.register SmsAction do
+    # ...
+end

@@ -1,19 +1,29 @@
 require 'spec_helper'
 
 describe Alert do
+  include ShredderHelper
   it{ should belong_to(:snow_report) }
   it{ should belong_to(:shredder) }
   it{ should belong_to(:area) }
   it{ should belong_to(:subscription) }
 
   it "should call send_message after_create" do
+    stub_twilio_confirmation
     @alert = FactoryGirl.build(:alert)
     @alert.should_receive(:deliver)
     @alert.save
   end
 
+  it "should auto-populate uuid" do
+    stub_twilio_confirmation
+    @alert = FactoryGirl.build(:alert)
+    @alert.save
+    @alert.uuid.should_not be_nil
+  end
+
   context 'date sent' do
     before do
+      stub_twilio_confirmation
       @alert = FactoryGirl.build(:alert)
     end
 
@@ -37,6 +47,7 @@ describe Alert do
   context 'alert types' do
     before do
       @area = FactoryGirl.create(:area)
+      stub_twilio_confirmation
       @shredder = FactoryGirl.create(:shredder, :area => @area)
       @shredder.mobile_confirm
       @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now)
@@ -54,7 +65,15 @@ describe Alert do
       end
 
       it "should call twilio for TextSubscription" do
-        Twilio::Sms.should_receive(:message).exactly(1).times.and_return(true)
+        @twilio_client = mock(Twilio::REST::Client)
+        @twilio_account = mock(Twilio::REST::Account)
+        @twilio_accounts = mock(Twilio::REST::Accounts)
+        @twilio_messages = mock(Twilio::REST::Messages)
+        Twilio::REST::Client.should_receive(:new).and_return(@twilio_client)
+        @twilio_client.should_receive(:accounts).and_return(@twilio_accounts)
+        @twilio_accounts.should_receive(:get).with(@snow_report.area.twilio_account).and_return(@twilio_account)
+        @twilio_messages.should_receive(:create).and_return(true)
+        @twilio_account.stub_chain(:sms, :messages).and_return(@twilio_messages)
         @snow_report.save
         @alert = Alert.last
         @alert.send_message
@@ -63,8 +82,17 @@ describe Alert do
       it "should not send an alert twice" do
         @snow_report.save
         @alert = Alert.last
+        @twilio_client = mock(Twilio::REST::Client)
+        @twilio_account = mock(Twilio::REST::Account)
+        @twilio_accounts = mock(Twilio::REST::Accounts)
+        @twilio_messages = mock(Twilio::REST::Messages)
+        Twilio::REST::Client.should_receive(:new).and_return(@twilio_client)
+        @twilio_client.should_receive(:accounts).and_return(@twilio_accounts)
+        @twilio_accounts.should_receive(:get).with(@snow_report.area.twilio_account).and_return(@twilio_account)
+        @twilio_messages.should_receive(:create).and_return(true)
+        @twilio_account.stub_chain(:sms, :messages).and_return(@twilio_messages)
         @alert.send_message
-        Twilio::Sms.should_not_receive(:message)
+        @alert.subscription.should_not_receive(:message)
         @alert.send_message
       end
     end

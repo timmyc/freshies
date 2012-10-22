@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe Shredder do
+  include ShredderHelper
   it{ should validate_presence_of(:mobile) }
   it{ should validate_presence_of(:area_id) }
   it{ should validate_presence_of(:inches) }
   it{ should validate_numericality_of(:inches) }
-  it{ should validate_uniqueness_of(:mobile).scoped_to(:area_id) }
+  xit{ should validate_uniqueness_of(:mobile).scoped_to(:area_id) }
   it{ should belong_to(:area) }
   it{ should have_many(:alerts) }
   it{ should have_many(:subscriptions) }
@@ -15,17 +16,14 @@ describe Shredder do
   
   context 'SMS Shredders' do
     before do
-      Twilio::Sms.should_receive(:message).and_return(true)
-      @shredder = FactoryGirl.create(:shredder)
+      #man I am no good at mocking stuff
+      @area = FactoryGirl.create(:area)
+      stub_twilio_confirmation
+      @shredder = FactoryGirl.create(:shredder, :area_id => @area.id)
     end
   
     it "should auto-create a confirmation_code" do
       @shredder.confirmation_code.empty?.should be_false
-    end
-
-    it "should send a confirmation code via twilio" do
-      Twilio::Sms.should_receive(:message).exactly(1).times.and_return(true)
-      @shredder = FactoryGirl.create(:shredder, :mobile => '1234567890',:email => 'meh@bleh.com')
     end
 
     it "should respond to confirm" do
@@ -99,7 +97,7 @@ describe Shredder do
       Shredder.should respond_to(:find_or_create_from_android)
     end
     it 'should not send a confirmation when a new shredder is created' do
-      Twilio::Sms.should_not_receive(:message)     
+      Twilio::REST::Client.should_not_receive(:new)
       lambda{
         shredder = Shredder.find_or_create_from_android(@params)
       }.should change(Shredder,:count).by(1)
@@ -114,6 +112,34 @@ describe Shredder do
       lambda{
         Shredder.find_or_create_from_android(@params)
       }.should change(AndroidSubscription,:count).by(1)
+
+    end
+  end
+
+  context 'SMS Only Shredders' do
+    before do
+      @area = FactoryGirl.create(:area)
+      @params = {:area_id => @area.id, :mobile => '+15413503333', :inches => '4'}
+    end
+    it 'should have a class method to create sms only shredders' do
+      Shredder.should respond_to(:find_or_create_by_number_area)
+    end
+    it 'should not send a confirmation when a new shredder is created' do
+      Twilio::REST::Client.should_not_receive(:new)
+      lambda{
+        shredder = Shredder.find_or_create_by_number_area(@params)
+      }.should change(Shredder,:count).by(1)
+    end
+    it 'should not create a new shredder if one exists for gcm_id' do
+      shredder = Shredder.find_or_create_by_number_area(@params)
+      lambda{
+        Shredder.find_or_create_by_number_area(@params)
+      }.should_not change(Shredder,:count)
+    end
+    it 'should create a text subscription' do
+      lambda{
+        Shredder.find_or_create_by_number_area(@params)
+      }.should change(TextSubscription,:count).by(1)
 
     end
   end

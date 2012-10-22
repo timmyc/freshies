@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe AlertsController do
-
+  include ShredderHelper
   describe "GET" do
     before do
       @area = FactoryGirl.create(:area)
+      stub_twilio_confirmation
       @shredder = FactoryGirl.create(:shredder, :area => @area)
       @shredder.mobile_confirm
       @voice_subscription = @shredder.voice_subscriptions.create(:area_id => @area.id, :inches => 4, :active => true, :message => 'omg it snowed {{new_snow}} inches and it is {{base_temp}} at the base!', :gender => 'male')

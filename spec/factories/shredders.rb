@@ -5,9 +5,9 @@ FactoryGirl.define do
     sequence(:email) { |n| "persion#{n}@example.com" }
     password 'blahblah'
     password_confirmation 'blahblah'
-    area_id 1
     inches 1
     active false
     confirmed false
+    association :area
   end
 end

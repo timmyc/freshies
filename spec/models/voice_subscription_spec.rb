@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe VoiceSubscription do
+  include ShredderHelper
   it{ should belong_to(:area) }
   it{ should belong_to(:shredder) }
   it{ should have_many(:alerts) }
@@ -18,6 +19,7 @@ describe VoiceSubscription do
   end
   
   before do
+    stub_twilio_confirmation
     @shredder = FactoryGirl.create(:shredder)
     @shredder.mobile_confirm
     @voice_subscription = @shredder.voice_subscriptions.create(:inches => 4, :message => 'omg it snowed {{snowfall_twelve}} and it is {{base_temp}} at the base!')

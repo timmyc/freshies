@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe AndroidSubscription do
+  include ShredderHelper
   it{ should belong_to(:area) }
   it{ should belong_to(:shredder) }
   it{ should have_many(:alerts) }
   it{ should validate_presence_of(:message) }
   
   before do
+    stub_twilio_confirmation
     @shredder = FactoryGirl.create(:shredder)
     @shredder.mobile_confirm
     @android_subscription = @shredder.android_subscriptions.create(:active => true, :inches => 4, :message => 'omg it snowed {{snowfall_twelve}} and it is {{base_temp}} at the base!')

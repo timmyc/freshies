@@ -1,0 +1,3 @@
+ActiveAdmin.register Number do
+    # ...
+end

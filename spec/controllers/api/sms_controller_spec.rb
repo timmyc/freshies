@@ -15,6 +15,31 @@ describe Api::SmsController do
       }.should change(Shredder,:count).by(1)
     end
 
+    context 'stop' do
+      before do
+        get 'index', :To => @number.inbound, :From => @from, :Body => '4 in'
+      end
+
+      it "should delete shredder" do
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'STOP'
+        }.should change(Shredder,:count).by(-1)
+      end
+
+      it "should delete shredder and TextSubscription" do
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'STOP'
+        }.should change(TextSubscription,:count).by(-1)
+      end
+      
+      it "should serve up the correct twiml" do
+        get 'index', :To => @number.inbound, :From => @from, :Body => 'STOP'
+        response.should be_success
+        xml = ActiveResource::Formats::XmlFormat.decode(response.body)
+        xml['Sms'].should eql("All alerts for #{@number.area.name} have been deleted. :( ")
+      end
+    end
+
     it "should serve up proper twiml" do
       get 'index', :To => @number.inbound, :From => @from, :Body => '4 in'
       response.should be_success

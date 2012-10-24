@@ -11,6 +11,12 @@ class Api::SmsController < ApplicationController
         resp = Twilio::TwiML::Response.new do |v|
           v.Sms "#{@number.area.name} powder alert set for #{inches}\"!"
         end
+      elsif params[:Body].downcase.strip == 'stop'
+        @shredder = Shredder.find_by_area_id_and_mobile(@number.area_id,params[:From])
+        @shredder.destroy
+        resp = Twilio::TwiML::Response.new do |v|
+          v.Sms "All alerts for #{@number.area.name} have been deleted. :( "
+        end
       else
         resp = Twilio::TwiML::Response.new do |v|
           v.Sms "Please reply with number of inches to signup for #{@number.area.name} Powder Alerts"

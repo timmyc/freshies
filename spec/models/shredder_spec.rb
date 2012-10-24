@@ -6,7 +6,6 @@ describe Shredder do
   it{ should validate_presence_of(:area_id) }
   it{ should validate_presence_of(:inches) }
   it{ should validate_numericality_of(:inches) }
-  xit{ should validate_uniqueness_of(:mobile).scoped_to(:area_id) }
   it{ should belong_to(:area) }
   it{ should have_many(:alerts) }
   it{ should have_many(:subscriptions) }

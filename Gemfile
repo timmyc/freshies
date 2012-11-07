@@ -20,7 +20,7 @@ gem 'json'
 gem 'therubyracer'
 gem 'thin'
 gem 'twilio-ruby'
-gem 'ullr', '>= 0.1.3'
+gem 'ullr', '>= 0.1.4'
 gem 'uglifier'
 
 #active admin
@@ -38,4 +38,7 @@ group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
   gem 'shoulda', '>= 3.0.0.beta'
+end
+
+group :test do
 end

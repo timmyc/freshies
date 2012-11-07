@@ -4,6 +4,7 @@ class Alert < ActiveRecord::Base
   belongs_to :shredder
   belongs_to :subscription
   belongs_to :number
+  belongs_to :forecast
   before_create :set_defaults
   after_create :deliver
 
@@ -22,6 +23,7 @@ class Alert < ActiveRecord::Base
 
   def set_defaults
     self.date_sent = Time.now.to_date
+    report_id = snow_report_id ? snow_report_id : forecast_id
     self.uuid = "#{shredder_id}#{rando}#{snow_report_id}"
   end
 

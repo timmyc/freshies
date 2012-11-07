@@ -51,6 +51,30 @@ describe Area do
     end
   end
 
+  context 'create_forecast' do
+    before do
+      @area = FactoryGirl.create(:area)
+    end
+    it{ should respond_to(:get_forecast) }
+    it 'should create an ullr instance' do
+      @ullr = mock(Ullr::Forecast)
+      @ullr.should_receive(:get_noaa_forecast).and_return([OpenStruct.new(:snow_estimate => ["0", "1"]), OpenStruct.new(:snow_estimate => ["2", "4"])])
+      Ullr::Forecast.should_receive(:new).with(:lat => @area.latitude.to_f, :lon => @area.longitude.to_f).and_return(@ullr)
+      @area.get_forecast.should eql([["0","1"],["2","4"]])
+    end
+
+    it{ should respond_to(:create_forecast) }
+    it 'should create a forecast' do
+      @area.should_receive(:get_forecast).and_return([["0","1"],["2","4"]])
+      expect{
+        @area.create_forecast
+      }.to change(@area.forecasts, :size).by(1)
+      forecast = @area.forecasts.last
+      forecast.snowfall_min.should eql(2)
+      forecast.snowfall_max.should eql(5)
+    end
+  end
+
   describe 'twilio sub account' do
     it{ should respond_to(:sub_account_id) }
     it{ should respond_to(:twilio_account) }

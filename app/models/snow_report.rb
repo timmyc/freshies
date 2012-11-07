@@ -16,7 +16,7 @@ class SnowReport < ActiveRecord::Base
     numbers = self.area.numbers
     number_counter = 0
     subscriptions.each do |s|
-      next if alerts_sent.include?(s.id)
+      next if alerts_sent.include?(s.id) || ['NoaaSubscription'].include?(s.class.name)
       number = numbers.empty? ? nil : numbers[number_counter%numbers.length]
       number_counter += 1
       self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id, :subscription_id => s.id, :number => number)

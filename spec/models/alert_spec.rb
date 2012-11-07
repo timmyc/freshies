@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Alert do
   include ShredderHelper
   it{ should belong_to(:snow_report) }
+  it{ should belong_to(:forecast) }
   it{ should belong_to(:shredder) }
   it{ should belong_to(:area) }
   it{ should belong_to(:subscription) }

@@ -3,7 +3,16 @@ class Api::SmsController < ApplicationController
 
   def index
     if @number
-      if params[:Body].strip.to_i > 0
+      if params[:Body] =~ /forecast [0-9]/i
+        matches = params[:Body].match(/forecast (\d,*)/i)
+        inches = matches[1]
+        @shredder = Shredder.find_or_create_by_number_area(:area_id => @number.area_id, :mobile => params[:From], :inches => inches)
+        @noaa_subscription = NoaaSubscription.find_or_create_by_shredder_id_and_area_id(@shredder.id,@number.area_id)
+        @noaa_subscription.update_attributes(:active => true, :inches => matches[1])
+        resp = Twilio::TwiML::Response.new do |v|
+          v.Sms "#{@number.area.name} forecast alert set for #{inches}\"!"
+        end
+      elsif params[:Body].strip.to_i > 0
         inches = params[:Body].strip.to_i
         @shredder = Shredder.find_or_create_by_number_area(:area_id => @number.area_id, :mobile => params[:From], :inches => inches)
         @text_subscription = @shredder.text_subscriptions.first

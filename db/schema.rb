@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121022031404) do
+ActiveRecord::Schema.define(:version => 20121107173915) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20121022031404) do
     t.integer  "promo_id"
     t.integer  "number_id"
     t.string   "uuid"
+    t.integer  "forecast_id"
   end
 
   add_index "alerts", ["date_sent"], :name => "index_alerts_on_date_sent"
@@ -107,6 +108,15 @@ ActiveRecord::Schema.define(:version => 20121022031404) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "forecasts", :force => true do |t|
+    t.integer  "area_id"
+    t.string   "snowfall"
+    t.integer  "snowfall_min"
+    t.integer  "snowfall_max"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "numbers", :force => true do |t|
     t.string   "inbound"

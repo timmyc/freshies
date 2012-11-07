@@ -15,6 +15,35 @@ describe Api::SmsController do
       }.should change(Shredder,:count).by(1)
     end
 
+    context 'forecast' do
+      it 'should not create another shredder if it already exists' do
+        get 'index', :To => @number.inbound, :From => @from, :Body => '4 in'
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'forecast 4'
+        }.should_not change(Shredder,:count)
+      end
+
+      it 'should create a noaa subscription' do
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'forecast 4'
+        }.should_not change(NoaaSubscription,:count).by(1)
+      end
+
+      it 'should update a noaa subscription' do
+        get 'index', :To => @number.inbound, :From => @from, :Body => 'forecast 6'
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'forecast 4'
+        }.should_not change(NoaaSubscription,:count)
+      end
+
+      it 'should serve up the proper twiml' do
+        get 'index', :To => @number.inbound, :From => @from, :Body => 'Forecast 6"'
+        response.should be_success
+        xml = ActiveResource::Formats::XmlFormat.decode(response.body)
+        xml['Sms'].should eql("#{@number.area.name} forecast alert set for 6\"!")
+      end
+    end
+
     context 'stop' do
       before do
         get 'index', :To => @number.inbound, :From => @from, :Body => '4 in'

@@ -7,6 +7,7 @@ class Area < ActiveRecord::Base
   has_many :alerts
   has_many :chairs
   has_many :numbers
+  has_many :forecasts
   scope :active, :conditions => {:active => true}
   DEFAULT_MESSAGE = '{{area}} is reporting {{new_snow}}" of new snow. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
 
@@ -25,6 +26,19 @@ class Area < ActiveRecord::Base
 
   def sms_message
     DEFAULT_MESSAGE
+  end
+
+  def get_forecast
+    ullr = Ullr::Forecast.new(:lat => self.latitude.to_f, :lon => self.longitude.to_f)
+    forecast = ullr.get_noaa_forecast
+    forecast[0..1].collect{|i| i.snow_estimate }
+  end
+
+  def create_forecast
+    forecast_data = get_forecast
+    snowfall_min = forecast_data.inject(0){|m,f| m += f.first.to_i }
+    snowfall_max = forecast_data.inject(0){|m,f| m += f.last.to_i }
+    forecasts.create(:snowfall_min => snowfall_min, :snowfall_max => snowfall_max)
   end
 
   private

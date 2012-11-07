@@ -68,6 +68,7 @@ describe SnowReport do
       @snow_report.first_report.should be_true
     end
     it "should create alerts after create if first report if snowfall is >= 1" do
+      @noaa_subscription = FactoryGirl.create(:noaa_subscription, :shredder_id => @shredder.id, :area_id => @area.id, :inches => 2, :active => true)
       @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date.ago(2.days), :snowfall_twelve => 2)
       expect {
         @snow_report.save

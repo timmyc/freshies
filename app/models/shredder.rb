@@ -15,6 +15,7 @@ class Shredder < ActiveRecord::Base
   has_many :subscriptions, :dependent => :destroy
   has_many :text_subscriptions, :dependent => :destroy
   has_many :voice_subscriptions, :dependent => :destroy
+  has_many :noaa_subscriptions, :dependent => :destroy
   has_many :android_subscriptions
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id

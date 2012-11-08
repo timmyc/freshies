@@ -26,7 +26,7 @@ describe Api::SmsController do
       it 'should create a noaa subscription' do
         lambda{
           get 'index', :To => @number.inbound, :From => @from, :Body => 'forecast 4'
-        }.should_not change(NoaaSubscription,:count).by(1)
+        }.should change(NoaaSubscription,:count).by(1)
       end
 
       it 'should update a noaa subscription' do

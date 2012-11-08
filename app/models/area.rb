@@ -38,7 +38,7 @@ class Area < ActiveRecord::Base
     forecast_data = get_forecast
     snowfall_min = forecast_data.inject(0){|m,f| m += f.first.to_i }
     snowfall_max = forecast_data.inject(0){|m,f| m += f.last.to_i }
-    forecasts.create(:snowfall_min => snowfall_min, :snowfall_max => snowfall_max)
+    forecasts.create(:snowfall_min => snowfall_min, :snowfall_max => snowfall_max, :snowfall => snowfall_min)
   end
 
   private

@@ -72,6 +72,7 @@ describe Area do
       forecast = @area.forecasts.last
       forecast.snowfall_min.should eql(2)
       forecast.snowfall_max.should eql(5)
+      forecast.snowfall.should eql(2)
     end
   end
 

@@ -8,7 +8,7 @@ class Api::SmsController < ApplicationController
         inches = matches[1]
         @shredder = Shredder.find_or_create_by_number_area(:area_id => @number.area_id, :mobile => params[:From], :inches => inches)
         @noaa_subscription = NoaaSubscription.find_or_create_by_shredder_id_and_area_id(@shredder.id,@number.area_id)
-        @noaa_subscription.update_attributes(:active => true, :inches => matches[1])
+        @noaa_subscription.update_attributes(:active => true, :inches => matches[1], :message => 'NOAA is forecasting {{snowfall_min}}" to {{snowfall_max}}" over the next 24 hours at {{area}}')
         resp = Twilio::TwiML::Response.new do |v|
           v.Sms "#{@number.area.name} forecast alert set for #{inches}\"!"
         end

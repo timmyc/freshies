@@ -49,3 +49,7 @@ div.stat{ width: 100%; margin: 5px auto 5px auto; border-top: 1px solid #ccc; pa
 textarea.message { margin-bottom: 0 }
 span.countdown{ display: block; width: 100%; clear: left; margin-bottom: 10px; font-size: 12px }
 div#preview-window{ padding: 10px; font-size: 12px; background: #ccc; font-weight: bold }
+
+body{ background: #F6F6F6 }
+
+

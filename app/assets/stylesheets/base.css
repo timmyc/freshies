@@ -52,7 +52,7 @@
 /* #Basic Styles
 ================================================== */
 	body {
-		background: #fff;
+		background: #F6F6F6;
 		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -348,16 +348,30 @@ h1, h2, h3, h4, h5, h6 {
 		color: #181818;
 		font-family: 'Lato', "Georgia", "Times New Roman", Helvetica, Arial, sans-serif;
 		font-weight: normal; }
-div.highlight{ background: #fff6d9 }
+div.highlight{ 
+  border: 1px solid #cacaca;
+-webkit-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    2px 2px 2px rgba(50, 50, 50, 0.75);
+box-shadow:         2px 2px 2px rgba(50, 50, 50, 0.75);
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-bottom: 20px;
+background: #fff6d9;  }
 div.shimmed{ width: 90%; margin: 0 auto 0; padding: 10px; }
 div.sub{ height: 140px; margin-top: 10px; }
 h1.logo{
+  margin: 0px auto;
   display: block;
   background: url(/images/header.png) 0 0 no-repeat transparent;
-  width: 300px;
-  height: 88px;
+  width: 322px;
+  height: 94px;
   text-indent: -9999px;
 }
+div.logo{ border-bottom: 1px solid #DDD; margin-bottom: 20px; padding-bottom: 20px }
+h1.home, h2.home{ font-size: 24px; text-align: center; }
+div.highlight div.shimmed { margin-bottom: 20px; padding-top: 20px; }
+span.boldy{ font-weight: bold; font-size: 110% }
 
 @media only screen and (max-width: 767px) {
   ul.nav{ margin-top: 10px }

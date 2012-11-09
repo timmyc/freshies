@@ -26,22 +26,9 @@
 <body>
 
   <div class="container">
-    <div class="eight columns">
-      <a href="/"><h1 class="remove-bottom logo" style="margin-top: 40px">Cone Patrol</h1></a>
+    <div class="logo sixteen columns">
+      <a href="/"><h1 class="logo" style="margin-top: 40px">Cone Patrol</h1></a>
     </div>
-    <div class="eight columns">
-      <ul class="nav">
-        <li><a href="http://blog.conepatrol.com">Blog</a></li>
-        <li><a href="http://conepatrol.happyfox.com/embed/1/?type=popup" target="_blank">Feedback</a></li>
-        <% if !shredder_signed_in? -%>
-          <li><a href="<%= new_shredder_session_url %>">Log In</a></li>
-        <% else -%>
-          <li><a href="<%= subscriptions_url %>">My Account</a></li>
-          <li><a href="<%= destroy_shredder_session_url %>">Log Out</a></li>
-        <% end -%>
-      </ul>
-    </div>
-    <div class="sixteen columns"><div class="tagline"><h5>Text Powder alerts for Mt. Bachelor, and other Northwest Ski Resorts <sup>beta</sup></h5></div></div>
     <% if flash[:notice] || flash[:error] -%>
     <div class="sixteen columns">
       <% if flash[:notice] -%>
@@ -52,11 +39,23 @@
     </div>
     <% end -%>
       <%= yield %>
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit"></a>
+<a class="addthis_counter addthis_pill_style"></a>
+</div>
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509d31c264fa6410"></script>
+<!-- AddThis Button END -->
+      
       <div class="sixteen columns">
         <div class="footer">
           <ul class="footerlinks">
             <li><a href="http://blog.conepatrol.com">Cone Patrol Blog</a></li>
             <li><a href="http://twitter.com/conepatrolapp">Twitter: @conepatrolapp</a></li>
+            <li><a href="http://haiku2.com">Made In Bend, OR</a></li>
           </ul>
         </div>
       </div>

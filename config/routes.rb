@@ -29,6 +29,7 @@ Cone::Application.routes.draw do
 
   namespace :api do
     resources :android
+    resources :ios
     resources :forecast
     resources :sms
   end

@@ -39,6 +39,7 @@ group :test, :development do
   gem "rspec-rails", "~> 2.6"
   gem 'factory_girl_rails'
   gem 'shoulda', '>= 3.0.0.beta'
+  gem 'json_spec'
 end
 
 group :test do

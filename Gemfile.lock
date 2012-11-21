@@ -114,6 +114,9 @@ GEM
       thor (~> 0.14)
     jruby-pageant (1.1.1)
     json (1.7.5)
+    json_spec (1.0.3)
+      multi_json (~> 1.0)
+      rspec (~> 2.0)
     jwt (0.1.5)
       multi_json (>= 1.0)
     kaminari (0.14.1)
@@ -247,6 +250,7 @@ DEPENDENCIES
   hominid
   jquery-rails
   json
+  json_spec
   meta_search (>= 1.1.0.pre)
   mustache
   mysql

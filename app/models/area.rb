@@ -24,6 +24,10 @@ class Area < ActiveRecord::Base
     end
   end
 
+  def last_snow_report
+    SnowReport.where("area_id = #{self.id}").limit(1).order('report_time desc')
+  end
+
   def sms_message
     DEFAULT_MESSAGE
   end

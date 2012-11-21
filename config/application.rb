@@ -51,5 +51,6 @@ module Cone
     config.gcm_key = ''
     config.in_season = false
     config.apns_pem_path = ''
+    config.apns_pem_password = ''
   end
 end

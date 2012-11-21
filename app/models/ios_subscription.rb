@@ -21,6 +21,7 @@ class IosSubscription < Subscription
     report = alert.snow_report
     message = Mustache.render(self.message, report.alert_attributes)
     APNS.pem = Cone::Application.config.apns_pem_path
+    APNS.pass = Cone::Application.config.apns_pem_password
     APNS.send_notification(self.shredder.push_token,message)
   end
 end

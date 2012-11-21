@@ -17,6 +17,7 @@ class Shredder < ActiveRecord::Base
   has_many :voice_subscriptions, :dependent => :destroy
   has_many :noaa_subscriptions, :dependent => :destroy
   has_many :android_subscriptions
+  has_many :ios_subscriptions
   before_create :create_confirmation_code
   validates_uniqueness_of :mobile, :scope => :area_id, :if => :should_validate_mobile
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
@@ -36,8 +37,9 @@ class Shredder < ActiveRecord::Base
       shredder.area_id = params[:area_id]
       shredder.inches = params[:inches].to_i
       shredder.mobile = gcm_id
+      shredder.push_token = params[:push_token] ? params[:push_token] : false
       shredder.save
-      shredder.android_subscriptions.create(:inches => shredder.inches, :area_id => shredder.area_id, :active => true, :message => GCM_MESSAGE)
+      shredder.android_subscriptions.create(:inches => shredder.inches, :area_id => shredder.area_id, :active => true, :message => GCM_MESSAGE) unless shredder.push_token
     end
     return shredder
   end

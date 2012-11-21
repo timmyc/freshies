@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107173915) do
+ActiveRecord::Schema.define(:version => 20121121062843) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20121107173915) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "gcm_id"
+    t.string   "push_token"
   end
 
   add_index "shredders", ["confirmation_token"], :name => "index_shredders_on_confirmation_token", :unique => true

@@ -50,5 +50,6 @@ module Cone
     config.twilio_number = ''
     config.gcm_key = ''
     config.in_season = false
+    config.apns_pem_path = ''
   end
 end

@@ -9,7 +9,7 @@ class Api::IosController < ApplicationController
     params[:push_token] = params[:gcm_id]
     @shredder = Shredder.find_or_create_from_android(params)
     if @shredder.ios_subscriptions.empty?
-      @shredder.ios_subscriptions.create(:inches => params[:inches], :area_id => @shredder.area_id, :active => true, :message => '{{area}} has {{new_snow}}" of new snow!')
+      @shredder.ios_subscriptions.create(:inches => params[:inches], :area_id => @shredder.area_id, :active => true, :message => '{{area}} has {{new_snow}} inches of new snow!')
     else
       @shredder.ios_subscriptions.first.update_from_app(params)
     end

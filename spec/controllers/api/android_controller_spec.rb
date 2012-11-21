@@ -13,6 +13,12 @@ describe Api::AndroidController do
       }.should change(Shredder,:count).by(1)
     end
 
+    it 'should create a shredder' do
+      lambda{
+        get 'index', :inches => '5', :active => 'true', :gcm_id => 'APA91bEx78omqADoQTQdWAFqaSqZEOB7pptHFCX_TLMT-W_A9N7CUT2RST3I9XfzkMwDIQkKUqRff7k0LcZW7JsP1bnI9F_J-AzFpcSE65mkuyyYupAr5vBp2FKrQ421n1xOAS24HgzjzB7DSNwwprc7WfFaGr8Cvg', :area_id => '1'
+      }.should change(Shredder, :count).by(1)
+    end
+
     it "should deactive subscription" do
       @shredder = Shredder.find_or_create_from_android(:area_id => 1, :gcm_id => @gcm_id, :active => 'true', :inches => '4')
       @sub = @shredder.android_subscriptions.first

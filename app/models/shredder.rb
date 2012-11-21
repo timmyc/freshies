@@ -18,7 +18,7 @@ class Shredder < ActiveRecord::Base
   has_many :noaa_subscriptions, :dependent => :destroy
   has_many :android_subscriptions
   before_create :create_confirmation_code
-  validates_uniqueness_of :mobile, :scope => :area_id
+  validates_uniqueness_of :mobile, :scope => :area_id, :if => :should_validate_mobile
   scope :notices_for, lambda{|inches,area_id| where("area_id = ? and inches <= ?",area_id,inches)}
   GREETS = ['SICKBURD','Gaper','Powderpuff','Powstar','Child of Ullr','Brah','Bro','Gnarsef','Brosef','Sickter','Shredder','Gaper Gapper','Shredhead','Freshie Fiend','Snow Bunny','Snow Angel','Conehead']
   DEFAULT_MESSAGE = 'FRESHIEZ! {{area}} is reporting {{new_snow}}" of new snow. Base Temp: {{base_temp}}. Reported At: {{report_time}}'
@@ -34,7 +34,8 @@ class Shredder < ActiveRecord::Base
       shredder.password_confirmation = gcm_id[0..8]
       shredder.gcm_id = gcm_id
       shredder.area_id = params[:area_id]
-      shredder.inches = params[:inches]
+      shredder.inches = params[:inches].to_i
+      shredder.mobile = gcm_id
       shredder.save
       shredder.android_subscriptions.create(:inches => shredder.inches, :area_id => shredder.area_id, :active => true, :message => GCM_MESSAGE)
     end

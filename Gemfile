@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.8'
 
 gem 'airbrake'
+gem 'apns'
 gem 'execjs'
 gem 'chronic'
 gem 'delayed_job'

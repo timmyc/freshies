@@ -22,6 +22,6 @@ class IosSubscription < Subscription
     message = Mustache.render(self.message, report.alert_attributes)
     APNS.pem = Cone::Application.config.apns_pem_path
     APNS.pass = Cone::Application.config.apns_pem_password
-    APNS.send_notification(self.shredder.push_token,message)
+    APNS.send_notification(self.shredder.push_token, :alert => message, :sound => 'default')
   end
 end

@@ -18,6 +18,7 @@ Cone::Application.routes.draw do
   match 'confirm' => 'shredders#confirm', :as => :confirm
   match 'doconfirm' => 'shredders#do_confirm', :as => :do_confirm
   match 'greetings/:id' => 'alerts#answer', :as => :answer
+  match 'in/:id' => 'alerts#in', :as => :link_alert
   #match 'confirm-email' => 'shredders#send_email_instructions', :as => :send_email_instructions
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):

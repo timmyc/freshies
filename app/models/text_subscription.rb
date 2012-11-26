@@ -14,6 +14,9 @@ class TextSubscription < Subscription
   def send_message(alert)
     report = alert.snow_report
     message = Mustache.render(self.message, report.alert_attributes)
+    if area && area.sms_link
+      message += " http://conepatrol.com/in/#{alert.uuid}"
+    end
     from_number = alert.number ? alert.number.inbound : Cone::Application.config.twilio_number
     twilio_client = Twilio::REST::Client.new(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
     twilio_account = twilio_client.accounts.get(area.twilio_account)

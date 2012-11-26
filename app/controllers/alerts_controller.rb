@@ -1,5 +1,15 @@
 class AlertsController < ApplicationController
 
+  def in
+    @alert = Alert.find_by_uuid("#{params[:id]}")
+    if @alert
+      @alert.update_attribute('clicked',true)
+      redirect_to @alert.area.sms_link, :status => :moved_permanently
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
   def answer
     @alert = Alert.find(params[:id])
     resp = Twilio::TwiML::Response.new do |v|

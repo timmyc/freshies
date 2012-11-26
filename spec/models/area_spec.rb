@@ -35,6 +35,12 @@ describe Area do
     it 'should use default message' do
       @area.sms_message.should eql('{{area}} is reporting {{new_snow}}" of new snow. Base Temp: {{base_temp}}. Reported At: {{report_time}}')
     end
+
+    it 'should use the custom message' do
+      @template = '{{area}} is reporting {{new_snow}}" of new snow.'
+      @area.update_attribute('sms_template',@template)
+      @area.sms_message.should eql(@template)
+    end
   end
 
   describe 'key' do

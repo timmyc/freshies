@@ -29,7 +29,7 @@ class Area < ActiveRecord::Base
   end
 
   def sms_message
-    DEFAULT_MESSAGE
+    sms_template || DEFAULT_MESSAGE
   end
 
   def get_forecast

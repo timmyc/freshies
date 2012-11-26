@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121062843) do
+ActiveRecord::Schema.define(:version => 20121126192924) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20121121062843) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "admin_users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(:version => 20121121062843) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "super_duper",            :default => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -55,10 +56,10 @@ ActiveRecord::Schema.define(:version => 20121121062843) do
     t.datetime "updated_at"
     t.integer  "subscription_id"
     t.date     "date_sent"
-    t.integer  "promo_id"
     t.integer  "number_id"
     t.string   "uuid"
     t.integer  "forecast_id"
+    t.boolean  "clicked",         :default => false
   end
 
   add_index "alerts", ["date_sent"], :name => "index_alerts_on_date_sent"
@@ -78,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20121121062843) do
     t.string   "sub_account_id"
     t.string   "footer_text"
     t.integer  "default_snow_amount"
+    t.string   "sms_link"
+    t.string   "sms_template"
   end
 
   add_index "areas", ["active"], :name => "index_areas_on_active"

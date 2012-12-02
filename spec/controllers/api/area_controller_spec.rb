@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe Api::AreaController do
-
+  include ShredderHelper
   describe "GET" do
     before do
       @area = FactoryGirl.create(:area)
+      stub_twitter
       @snow_report = FactoryGirl.create(:snow_report, :area => @area, :report_time => Time.now)
     end
 

@@ -21,6 +21,10 @@ class SnowReport < ActiveRecord::Base
       number_counter += 1
       self.alerts.create(:shredder_id => s.shredder_id, :area_id => self.area_id, :subscription_id => s.id, :number => number)
     end
+    #Twitter
+    if self.snowfall_twelve > 0 && self.area.twitter
+      Twitter.update(".@#{self.area.twitter} is reporting #{snowfall_twelve}\" of new snow!")
+    end
   end
 
   def alert_attributes

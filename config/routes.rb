@@ -1,8 +1,4 @@
 Cone::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   #devise_for :shredders, :path => "shredders", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :registration => 'register', :sign_up => 'sign_up' }
   devise_for :shredders
   # The priority is based upon order of creation:

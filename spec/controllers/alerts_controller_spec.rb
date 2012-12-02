@@ -11,6 +11,7 @@ describe AlertsController do
       @area.update_attribute('sms_link','http://mtbachelor.com')
       @shredder.mobile_confirm
       @voice_subscription = @shredder.voice_subscriptions.create(:area_id => @area.id, :inches => 4, :active => true, :message => 'omg it snowed {{new_snow}} inches and it is {{base_temp}} at the base!', :gender => 'male')
+      stub_twitter
       @snow_report = FactoryGirl.create(:snow_report, :snowfall_twelve => 10, :area => @area, :report_time => Time.now, :base_temp => 28)
     end
     

@@ -29,6 +29,7 @@ describe TextSubscription do
 
   context 'send_message' do
     it "should send the correct alert body" do
+      stub_twitter
       @snow_report = FactoryGirl.create(:snow_report, :area => @shredder.area, :report_time => Time.now)
       @alert = Alert.last
       stub_twilio_sms({:from => Cone::Application.config.twilio_number, :to => @shredder.mobile, :body => 'new snow: 2'})
@@ -37,6 +38,7 @@ describe TextSubscription do
 
     it "should append the link if area has sms_link set" do
       @shredder.area.update_attribute('sms_link','http://mtbachelor.com')
+      stub_twitter
       @snow_report = FactoryGirl.create(:snow_report, :area => @shredder.area, :report_time => Time.now)
       @alert = Alert.last
       stub_twilio_sms({:from => Cone::Application.config.twilio_number, :to => @shredder.mobile, :body => "new snow: 2 http://conepatrol.com/in/#{@alert.uuid}"})
@@ -45,6 +47,7 @@ describe TextSubscription do
     
     it 'should use the number attatched to the alert to send the message' do
       @number = @shredder.area.numbers.create(:inbound => '+15558675309')
+      stub_twitter
       @snow_report = FactoryGirl.create(:snow_report, :area => @shredder.area, :report_time => Time.now)
       @alert = Alert.last
       @alert.update_attribute('number_id', @number.id)

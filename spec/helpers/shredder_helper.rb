@@ -1,4 +1,7 @@
 module ShredderHelper
+  def stub_twitter
+    Twitter.should_receive(:update).at_least(1).times.and_return(true)
+  end
   def stub_twilio_confirmation
     @area ||= FactoryGirl.create(:area)
     @twilio_client = mock(Twilio::REST::Client)

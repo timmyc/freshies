@@ -10,6 +10,7 @@ describe Alert do
 
   it "should call send_message after_create" do
     stub_twilio_confirmation
+    stub_twitter
     @alert = FactoryGirl.build(:alert)
     @alert.should_receive(:deliver)
     @alert.save
@@ -17,6 +18,7 @@ describe Alert do
 
   it "should auto-populate uuid" do
     stub_twilio_confirmation
+    stub_twitter
     @alert = FactoryGirl.build(:alert)
     @alert.save
     @alert.uuid.should_not be_nil
@@ -25,6 +27,7 @@ describe Alert do
   context 'date sent' do
     before do
       stub_twilio_confirmation
+      stub_twitter
       @alert = FactoryGirl.build(:alert)
     end
 
@@ -51,6 +54,7 @@ describe Alert do
       stub_twilio_confirmation
       @shredder = FactoryGirl.create(:shredder, :area => @area)
       @shredder.mobile_confirm
+      stub_twitter
       @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now)
     end
     

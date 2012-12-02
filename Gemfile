@@ -21,13 +21,14 @@ gem 'json'
 gem 'therubyracer'
 gem 'thin'
 gem 'twilio-ruby'
+gem 'twitter'
 gem 'ullr', '>= 0.1.4'
 gem 'uglifier'
 
 #active admin
-gem 'activeadmin'
-gem 'sass-rails'
-gem "meta_search",    '>= 1.1.0.pre'
+#gem 'activeadmin'
+#gem 'sass-rails'
+#gem "meta_search",    '>= 1.1.0.pre'
 
 
 group :assets do

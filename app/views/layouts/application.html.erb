@@ -24,11 +24,9 @@
   <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
 </head>
 <body>
-
-  <div class="container">
-    <div class="logo sixteen columns">
-      <a href="/"><h1 class="logo" style="margin-top: 40px">Cone Patrol</h1></a>
-    </div>
+  
+  <a href="/"><h1 class="logo" style="margin-top: 40px">Cone Patrol</h1></a>
+  <div class="container" id="wrap">
     <% if flash[:notice] || flash[:error] -%>
     <div class="sixteen columns">
       <% if flash[:notice] -%>
@@ -53,6 +51,7 @@
       <div class="sixteen columns">
         <div class="footer">
           <ul class="footerlinks">
+            <li><a href="https://www.facebook.com/conepatrol">Facebook</a></li>
             <li><a href="http://blog.conepatrol.com">Cone Patrol Blog</a></li>
             <li><a href="http://twitter.com/conepatrolapp">Twitter: @conepatrolapp</a></li>
             <li><a href="http://haiku2.com">Made In Bend, OR</a></li>

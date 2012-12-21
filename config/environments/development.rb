@@ -39,10 +39,10 @@ Cone::Application.configure do
   config.mail_chimp_token = ENV['MAIL_CHIMP_TOKEN']
   config.mail_chimp_list = ENV['MAIL_CHIMP_LIST']
 
-  TWITTER_CONSUMER_KEY = ENV['TWITTER_CONSUMER_KEY']
-  TWITTER_CONSUMER_SECRET = ENV['TWITTER_CONSUMER_KEY']
-  TWITTER_OAUTH_TOKEN = ENV['TWITTER_OAUTH_TOKEN']
-  TWITTER_OAUTH_TOKEN_SECRET = ENV['TWITTER_OAUTH_TOKEN_SECRET']
+  config.twitter_consumer_key = ENV['TWITTER_CONSUMER_KEY']
+  config.twitter_consumer_secret = ENV['TWITTER_CONSUMER_KEY']
+  config.twitter_oauth_token = ENV['TWITTER_OAUTH_TOKEN']
+  config.twitter_oauth_secret = ENV['TWITTER_OAUTH_TOKEN_SECRET']
   
   
 end

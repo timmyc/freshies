@@ -52,7 +52,7 @@
 /* #Basic Styles
 ================================================== */
 	body {
-		background: #F6F6F6;
+		background: transparent;
 		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #444;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -367,8 +367,9 @@ h1.logo{
   width: 322px;
   height: 94px;
   text-indent: -9999px;
+  opacity: 1.0
 }
-div.logo{ border-bottom: 1px solid #DDD; margin-bottom: 20px; padding-bottom: 20px }
+div.logo{ background: #333; margin: 20px 0px; }
 h1.home, h2.home{ font-size: 24px; text-align: center; }
 div.highlight div.shimmed { margin-bottom: 20px; padding-top: 20px; }
 span.boldy{ font-weight: bold; font-size: 110% }
@@ -615,3 +616,27 @@ div.last-update{
 div.last-update span.title { font-weight: bold }
 div.last-update span.highlight { font-weight: bold; }
 div.areahome { cursor: pointer }
+
+html { 
+  background: url(/images/cp.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+div#wrap{ 
+  background: #F6F6F6; 
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 2px solid #F9F9F9;
+  box-shadow: 0 0 18px #333;
+}
+
+p.play{
+  text-align: center
+}
+
+p.play img{ border: 0}

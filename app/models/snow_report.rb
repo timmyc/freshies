@@ -23,7 +23,7 @@ class SnowReport < ActiveRecord::Base
     end
     #Twitter
     if self.snowfall_twelve > 0 && self.area.twitter
-      Twitter.update(".@#{self.area.twitter} is reporting #{snowfall_twelve}\" of new snow!")
+      #Twitter.update(".@#{self.area.twitter} is reporting #{snowfall_twelve}\" of new snow!")
     end
   end
 

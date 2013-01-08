@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 gem 'airbrake'
 gem 'apns'
@@ -14,7 +14,7 @@ gem 'gcm'
 gem 'happymapper'
 gem 'hominid'
 gem 'mustache'
-gem 'mysql'
+gem 'mysql', '2.8.1'
 gem 'nokogiri'
 gem 'jquery-rails'
 gem 'json'

@@ -100,7 +100,7 @@ describe SnowReport do
         @snow_report.save
       }.to change(@snow_report.alerts, :size).by(1)
     end
-    it "should update twitter status when new snow falls" do
+    xit "should update twitter status when new snow falls" do
       Twitter.should_receive(:update).with(".@#{@area.twitter} is reporting 2\" of new snow!").and_return(true)
       @snow_report = FactoryGirl.build(:snow_report, :area => @area, :report_time => Time.now.to_date, :snowfall_twelve => 2)
       @snow_report.save

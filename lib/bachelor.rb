@@ -11,22 +11,27 @@ class Bachelor
   end
 
   def get_data
-    updated = self.doc.xpath('//div[@class="snowfall-block odd"]//h6').first.text()
-    snowfall_twelve = self.doc.xpath('//div[@class="snowfall-block odd"]//strong').first.text()
-    snowfall_twentyfour = self.doc.xpath('//div[@class="snowfall-block even"]//strong').first.text()
-    values = self.doc.xpath('//div[@id="mountain-conditions"]//div[@class="label_value-block"]//span[@class="value"]').collect{|i| i.text() }
-    keys = self.doc.xpath('//div[@id="mountain-conditions"]//div[@class="label_value-block"]//label').collect{|i| i.text() }
-    data = {}
-    keys.each_with_index{|k,i| data[slug_me(k)] = values[i].to_i }
+    date = self.doc.xpath('//table[@class="full layout"]//tr//td[1]//h3').text()
+    time = self.doc.xpath('//table[@class="full layout"]//tr//td[2]//h3//strong').text()
+    updated = "#{date} #{time}"
+    snowfall_twelve = self.doc.xpath('//table[@class="snow-conditions-table layout full"][2]//tr[1]//td[1]//p//span').text()
+    snowfall_twentyfour = self.doc.xpath('//table[@class="snow-conditions-table layout full"][2]//tr[1]//td[2]//p//span').text()
+    base_depth = self.doc.xpath('//table[@class="snow-conditions-table layout full"][2]//tr[1]//td[8]//p//span').text().to_i
+    mid_depth = self.doc.xpath('//table[@class="snow-conditions-table layout full"][1]//tr[1]//td[8]//p//span').text().to_i
+    temps = doc.xpath('//table[@id="conditions-weather-table"]//tr[2]//td[1]//p//strong')
+    summit_temp = temps[0].text().to_i
+    mid_temp = temps[1].text().to_i
+    base_temp = temps[2].text().to_i
+    
     self.readings = {
       :report_time => Time.zone.parse(updated),
       :snowfall_twelve => snowfall_twelve.to_i,
       :snowfall_twentyfour => snowfall_twentyfour.to_i,
-      :base_temp => data[:west_village_temperature],
-      :mid_temp => data[:pine_marten_temperature],
-      :summit_temp => data[:summit_temp],
-      :base_depth => data[:west_village_depth],
-      :mid_depth => data[:mid_mountain_depth]
+      :base_temp => base_temp,
+      :mid_temp => mid_temp,
+      :summit_temp => summit_temp,
+      :base_depth => base_depth,
+      :mid_depth => mid_depth
     }
   end
 

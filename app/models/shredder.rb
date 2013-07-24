@@ -70,7 +70,7 @@ class Shredder < ActiveRecord::Base
     twilio_client = Twilio::REST::Client.new(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
     area = Area.find(self.area_id)
     twilio_account = twilio_client.accounts.get(area.twilio_account)
-    twilio_account.sms.messages.create(:from => Cone::Application.config.twilio_number, :to => self.mobile, :body => "conepatrol.com/confirm confirmation code: #{self.confirmation_code}")
+    twilio_account.sms.messages.create(:from => area.default_number, :to => self.mobile, :body => "conepatrol.com/confirm confirmation code: #{self.confirmation_code}")
   end
 
   def mobile_confirm

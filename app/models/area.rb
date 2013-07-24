@@ -45,6 +45,14 @@ class Area < ActiveRecord::Base
     forecasts.create(:snowfall_min => snowfall_min, :snowfall_max => snowfall_max, :snowfall => snowfall_min)
   end
 
+  def default_number
+    if !numbers.empty?
+      return numbers.first.inbound
+    else
+      return Cone::Application.config.twilio_number
+    end
+  end
+
   private
 
   def set_api_keys

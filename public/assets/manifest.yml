@@ -1,10 +1,19 @@
 ---
 apple-touch-icon-114x114.png: apple-touch-icon-114x114.png
+apple-touch-icon-114x114/index.png: apple-touch-icon-114x114.png
 apple-touch-icon-72x72.png: apple-touch-icon-72x72.png
+apple-touch-icon-72x72/index.png: apple-touch-icon-72x72.png
 apple-touch-icon.png: apple-touch-icon.png
+apple-touch-icon/index.png: apple-touch-icon.png
 cp.png: cp.png
+cp/index.png: cp.png
 favicon.ico: favicon.ico
+favicon/index.ico: favicon.ico
 rails.png: rails.png
+rails/index.png: rails.png
 wood.jpg: wood.jpg
+wood/index.jpg: wood.jpg
 application.js: application.js
+application/index.js: application.js
 application.css: application.css
+application/index.css: application.css

@@ -14,6 +14,7 @@ describe Shredder do
   it{ should have_many(:android_subscriptions) }
   it{ should have_many(:ios_subscriptions) }
   it{ should have_many(:noaa_subscriptions) }
+  it{ should have_many(:passes) }
   
   context 'SMS Shredders' do
     before do

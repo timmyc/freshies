@@ -26,6 +26,15 @@ class Api::SmsController < ApplicationController
         resp = Twilio::TwiML::Response.new do |v|
           v.Sms "All alerts for #{@number.area.name} have been deleted. :( "
         end
+      elsif params[:Body] =~ /track/i
+        matches = params[:Body].match(/track (.*)/i)
+        pass_number = matches[1]
+        @shredder = Shredder.find_or_create_by_number_area(:area_id => @number.area_id, :mobile => params[:From], :inches => 2)
+        @pass = @shredder.passes.find_or_create_by_pass_number(pass_number)
+        @pass.update_stats
+        resp = Twilio::TwiML::Response.new do |v|
+          v.Sms "Pass Added! Current Stats: #{@pass.total_days} days, #{@pass.total_runs} runs, #{@pass.total_vertical_feet}' feet"
+        end
       else
         resp = Twilio::TwiML::Response.new do |v|
           v.Sms "Please reply with number of inches to signup for #{@number.area.name} Powder Alerts"

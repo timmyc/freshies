@@ -22,6 +22,7 @@ gem 'therubyracer'
 gem 'thin'
 gem 'twilio-ruby'
 gem 'twitter'
+gem 'tyt'
 gem 'ullr', '>= 0.1.4'
 gem 'uglifier'
 

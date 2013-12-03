@@ -15,6 +15,14 @@ describe Api::SmsController do
       }.should change(Shredder,:count).by(1)
     end
 
+    context 'passes' do
+      it 'should create a pass for a shredder' do
+        lambda{
+          get 'index', :To => @number.inbound, :From => @from, :Body => 'track MTB123'
+        }.should change(Pass,:count)
+      end
+    end
+
     context 'forecast' do
       it 'should not create another shredder if it already exists' do
         get 'index', :To => @number.inbound, :From => @from, :Body => '4 in'

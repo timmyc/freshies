@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126192924) do
+ActiveRecord::Schema.define(:version => 20131203050821) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -130,6 +130,16 @@ ActiveRecord::Schema.define(:version => 20121126192924) do
 
   add_index "numbers", ["area_id"], :name => "index_numbers_on_area_id"
   add_index "numbers", ["inbound"], :name => "index_numbers_on_inbound"
+
+  create_table "passes", :force => true do |t|
+    t.integer  "shredder_id"
+    t.string   "pass_number"
+    t.integer  "total_vertical_feet"
+    t.integer  "total_days"
+    t.integer  "total_runs"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "promos", :force => true do |t|
     t.integer  "area_id"

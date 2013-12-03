@@ -7,7 +7,7 @@ class Pass < ActiveRecord::Base
     season_data = tyt.season_data
     self.total_runs = season_data.total_days
     self.total_vertical_feet = season_data.total_vertical_feet
-    self.total_runs = season_data.total_runs
+    self.total_days = season_data.total_days
     self.save
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203050821) do
+ActiveRecord::Schema.define(:version => 20131204043136) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,7 +139,11 @@ ActiveRecord::Schema.define(:version => 20131203050821) do
     t.integer  "total_runs"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "last_chair"
+    t.datetime "last_chair_time"
   end
+
+  add_index "passes", ["last_chair_time"], :name => "index_passes_on_last_chair_time"
 
   create_table "promos", :force => true do |t|
     t.integer  "area_id"

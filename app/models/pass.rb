@@ -36,11 +36,26 @@ class Pass < ActiveRecord::Base
     return @tyt.season_data
   end
 
+  def get_date_data(date)
+    @tyt ||= Tyt.const_get(shredder.area.klass).new(:pass => pass_number)
+    return @tyt.date_data(date)
+  end
+
   def send_day_stats(ski_day,area)
     from_number = area.default_number
     twilio_client = Twilio::REST::Client.new(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
     twilio_account = twilio_client.accounts.get(area.twilio_account)
     message = "Track Your Turns: You did #{ski_day.runs} runs for #{ski_day.vertical_feet}' vertical feet"
+    twilio_account.sms.messages.create(:from => from_number, :to => self.shredder.mobile, :body => message)
+  end
+
+  def send_last_run(last_run,area)
+    from_number = area.default_number
+    twilio_client = Twilio::REST::Client.new(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
+    twilio_account = twilio_client.accounts.get(area.twilio_account)
+    message = "Track Your Turns: Just skied on #{last_run.chair} at #{last_run.datetime}"
+    self.last_run = last_run.datetime
+    self.save
     twilio_account.sms.messages.create(:from => from_number, :to => self.shredder.mobile, :body => message)
   end
 end

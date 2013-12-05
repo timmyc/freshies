@@ -31,6 +31,11 @@ Cone::Application.routes.draw do
         get 'last_report'
       end
     end
+    resources :passes do
+      collection do
+        get 'end_of_day'
+      end
+    end
     resources :ios
     resources :forecast
     resources :sms

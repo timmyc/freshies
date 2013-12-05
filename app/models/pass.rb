@@ -40,7 +40,7 @@ class Pass < ActiveRecord::Base
     from_number = area.default_number
     twilio_client = Twilio::REST::Client.new(Cone::Application.config.twilio_sid, Cone::Application.config.twilio_auth)
     twilio_account = twilio_client.accounts.get(area.twilio_account)
-    message = "Track Your Turns: #{ski_day.runs} runs #{ski_day.vertical_feet}' vertical feet"
+    message = "Track Your Turns: You did #{ski_day.runs} runs for #{ski_day.vertical_feet}' vertical feet"
     twilio_account.sms.messages.create(:from => from_number, :to => self.shredder.mobile, :body => message)
   end
 end

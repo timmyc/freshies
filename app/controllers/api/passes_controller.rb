@@ -3,14 +3,16 @@ class Api::PassesController < ApplicationController
 
   def end_of_day
     if @area
+      count = 0
       Pass.include(:shredder).all.each do |pass|
         next unless pass.shredder.area_id == @area.id
         today_turns = pass.skied_on?(Time.now.to_date)
         if today_turns
           pass.send_day_stats(today_turns,@area)
+          count += 1
         end
       end
-      render :json => @forecast
+      render :json => { alerts: count }
     else
       render :text => "unauthorized", :status => :unauthorized
     end

@@ -39,10 +39,7 @@ class Api::PassesController < ApplicationController
   private
 
   def set_area
-    authenticate_or_request_with_http_basic do |user, password|
-      @area = Area.find_by_key_and_secret(user,password)
-    end
+    @area = Area.find_by_key(params[:id])
   end
 
 end
-

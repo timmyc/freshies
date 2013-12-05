@@ -3,6 +3,7 @@ class Api::PassesController < ApplicationController
 
   def real_time
     if @area
+      count = 0
       Pass.where(real_time: true).all.each do |pass|
         next unless pass.shredder.area_id == @area.id
         today = Time.now.to_date

@@ -33,6 +33,7 @@ Cone::Application.routes.draw do
     end
     resources :passes do
       collection do
+        get 'real_time'
         get 'end_of_day'
       end
     end

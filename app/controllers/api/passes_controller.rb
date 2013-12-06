@@ -23,7 +23,7 @@ class Api::PassesController < ApplicationController
   def end_of_day
     if @area
       count = 0
-      Pass.include(:shredder).all.each do |pass|
+      Pass.includes(:shredder).all.each do |pass|
         next unless pass.shredder.area_id == @area.id
         today_turns = pass.skied_on?(Time.now.to_date)
         if today_turns

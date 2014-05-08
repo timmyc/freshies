@@ -1,32 +1,22 @@
-require "bundler/capistrano"
-set :application, "cone"
-set :repository,  "git://github.com/timmyc/freshies.git"
+# config valid only for Capistrano 3.1
+lock '3.1.0'
 
-set :scm, :git
+set :application, 'conepatrol'
+set :repo_url, 'git@github.com:timmyc/freshies.git'
 
-role :web, "freshies"                          # Your HTTP server, Apache/etc
-role :app, "freshies"                          # This may be the same as your `Web` server
-role :db,  "freshies", :primary => true # This is where Rails migrations will run
-set :deploy_to, '/home/timmy/conepatrol.com'
+set :deploy_to, '/home/deploy/conepatrol.com'
 
-desc "Symlink db config and public assets"    
-task :symlink_assets, :roles => :app, :except => {:no_release => true, :no_symlink => true} do
-  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/"
-  run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/"
-  run "rm #{release_path}/config/environments/development.rb"
-  run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/development.rb"
-  run "ln -nfs #{shared_path}/tmp/ #{release_path}/tmp/"
-  #run "cd #{release_path} && bundle exec rake assets:precompile"
-end
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
-after "deploy", "symlink_assets"
 
-        require './config/boot'
-        require 'airbrake/capistrano'
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+end
